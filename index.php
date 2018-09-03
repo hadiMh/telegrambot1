@@ -1,5 +1,5 @@
 <?php
-    $connection = mysqli_connect(getenv('BOT1DBSERVER')+"/hadidb", getenv('BOT1DBUSERNAME'), getenv('BOT1DBPASSWORD'), getenv('BOT1DBTABLE'));
+    $connection = mysqli_connect(getenv('BOT1DBSERVER')."/hadidb", getenv('BOT1DBUSERNAME'), getenv('BOT1DBPASSWORD'), getenv('BOT1DBTABLE'));
     // var_dump(function_exists('mysqli_connect'));
     if(!$connection) {
         echo "Database connection failed. shittt!";
@@ -14,7 +14,7 @@
      
     $chatId = $update["message"]["chat"]["id"];
     $message = $update["message"]["text"];
-     
+
     //CustomKeyBord
     // answer 1
     $option = array(array("salam", "Key1"), array("key2", "key3"));
