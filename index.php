@@ -1,8 +1,8 @@
 <?php
-    $connection = mysqli_connect('https://www.db4free.net:3306', 'hadimh', 'mhdh1999', 'table1');
+    $connection = mysqli_connect(getenv('BOT1DBSERVER'), getenv('BOT1DBUSERNAME'), getenv('BOT1DBPASSWORD'), getenv('BOT1DBTABLE'));
     // var_dump(function_exists('mysqli_connect'));
     if(!$connection) {
-        echo "Database connection failed. shit shit!";
+        echo "Database connection failed. shit!";
     }
 	ini_set('error_reporting', 'E_ALL');
  
