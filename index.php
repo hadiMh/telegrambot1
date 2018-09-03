@@ -26,6 +26,15 @@
      sendMessage($chatId, "شروع می کنیم", $encodedMarkup);
      break;
      case "salam":
+     $query = "INSERT INTO users(username, password)";
+     $query .= "VALUES('".$username."','".$password."')";
+
+     $result = mysqli_query($connection, $query);
+     if($result) {
+        echo "Record Created";
+     } else {
+        die('Query Failed!');
+     }
      sendMessage($chatId, "salam be ruye mahet", $encodedMarkup);
      break;
      default:
