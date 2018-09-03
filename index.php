@@ -1,4 +1,5 @@
 <?php
+    include "db.php";
 	ini_set('error_reporting', 'E_ALL');
  
     $botToken = getenv('BOT1TOKEN');
@@ -11,14 +12,7 @@
     $message = $update["message"]["text"];
      
     //CustomKeyBord
-    $option = array(array("salam", "Key1"), array("key2", "key3"));
-    $replyMarkup = array(
-     'keyboard' => $option,
-     'one_time_keyboard' => false,
-     'resize_keyboard' => true,
-     'selective' => true
-    );
-    $encodedMarkup = json_encode($replyMarkup, true);
+    include "buttoms.php";
      
     function sendMessage($chatId, $message, $r)
     {
