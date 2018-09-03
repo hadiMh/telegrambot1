@@ -26,8 +26,7 @@
      sendMessage($chatId, "شروع می کنیم", $encodedMarkup);
      break;
      case "salam":
-     $query = "INSERT INTO users(username, password)";
-     $query .= "VALUES('".$username."','".$password."')";
+     $query = "INSERT INTO `table1`(`name`, `from_id`, `from_firstname`, `from_username`, `chat_id`, `data`) VALUES ('111','222','333','444','555','666')";
 
      $result = mysqli_query($connection, $query);
      if($result) {
