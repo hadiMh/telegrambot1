@@ -70,10 +70,11 @@
                 $num++;
             }
         }
+        return $buttomArray;
     }
 
     function returnEM($buttomArray) { // create a basic encoded markaup for givven buttoms
-        addNumbers($buttomArray);
+        $buttomArray = addNumbers($buttomArray);
         $rm = array(
             'keyboard' => $buttomArray,
             'one_time_keyboard' => false,
