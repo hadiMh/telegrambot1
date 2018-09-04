@@ -19,15 +19,13 @@
     switch ($message) {
      
         case "/start":
-            sendMessage($chatId, "سلام\nبه ربات کاملا رایگان تست شخصیت خوش آمدین\nما اینجا یه تست استاندارد به روز و جدید از شما میگیریم و به شما میگیم که چه نوع شخصیتی دارید. این تست بیش از چند دقیقه وقت نمیخواد.\nیادت باشه هیچ دکمه ای رو دوبار نزنی وگرنه نتیجه اشتباه حساب میشه\nپس بزن بریم. روی دکمه شروع کلیک کن", $encodedMarkup);
+            sendMessage($chatId, "سلام\nبه ربات کاملا رایگان تست شخصیت خوش آمدین\nما اینجا یه تست استاندارد به روز و جدید از شما میگیریم و به شما میگیم که چه نوع شخصیتی دارید. این تست بیش از چند دقیقه وقت نمیخواد.\nیادت باشه هیچ دکمه ای رو دوبار نزنی وگرنه نتیجه اشتباه حساب میشه\nپس بزن بریم. روی دکمه شروع کلیک کن", returnEM(array("شروع")));
             break;
-        case "salam":
-            sendMessage($chatId, "salam be ruye mahet", $encodedMarkup);
-            break;
-        case "/myid":
-            sendMessage($chatId, "chatId: $chatId,  userId: $userId", $encodedMarkup);
         case "شروع":
-            sendMessage($chatId, "سوال 1:", $q1em);
+            sendMessage($chatId, "", returnEM(array("شروع")));
+            break;
+        case "شروع":
+        sendMessage($chatId, "سوال اول:"."\n".$questions[0], returnEM($buttoms[0]));
             break;
         case "1":
             sendMessage($chatId, "سوال اول:"."\n".$questions[0], returnEM($buttoms[0]));
