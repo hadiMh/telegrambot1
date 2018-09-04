@@ -1,3 +1,4 @@
+<?php
 // answer 1
     $option = array(array("salam", "Key1"), array("key2", "key3"));
     $replyMarkup = array(
