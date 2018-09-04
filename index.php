@@ -20,7 +20,7 @@
     $query .=" VALUES ('$name', '$userId', '$username', '$chatId', '$message')";
     $result = mysqli_query($connection, $query);
     if(!$result) {
-        sendMessage($chatId, "QUERY FAILED: " . mysqli_error($connection), returnEM($buttoms[0]));
+        sendMessage($chatId, "QUERY FAILED: " . mysqli_error($connection) ."\n-- ".$query, returnEM($buttoms[0]));
     } else {
         sendMessage($chatId, "RECORD UPDATED!", returnEM($buttoms[0]));
     }
