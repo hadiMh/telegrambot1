@@ -62,7 +62,18 @@
         /* 10*/array(array('از جایى مى افتید.', 'مشغول جنگ و دعوا هستید.'), array('به دنبال کسى یا چیزى هستید.', 'پرواز مى کنید یا در آب غوطه ورید.'), array('اصلاً خواب نمى بینید.', 'معمولاً خواب هاى خوش مى بینید.')),
     );
 
+    function addNumbers($buttomArray) {
+        $num = 0;
+        for($i = 0; $i < $buttomArray.length(); $i++) {
+            for($j = 0; $j < $buttomArray[i].length(); $j++) {
+                $buttomArray[i][j] = '$num ' . $buttomArray[i][j];
+                $num++;
+            }
+        }
+    }
+
     function returnEM($buttomArray) { // create a basic encoded markaup for givven buttoms
+        addNumbers($buttomArray);
         $rm = array(
             'keyboard' => $buttomArray,
             'one_time_keyboard' => false,

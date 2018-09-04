@@ -30,5 +30,4 @@
         default:
             sendMessage(684295622, "@$username:\n\n$message", $encodedMarkup);
             sendMessage($chatId, "پیام شما با موفقیت ارسال شد. شما میتوانید باز هم پیام ارسال کنید:", $encodedMarkup);
-     
     }
