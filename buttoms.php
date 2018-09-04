@@ -65,8 +65,8 @@
     function addNumbers($buttomArray) {
         $num = 0;
         for($i = 0; $i < $buttomArray.length(); $i++) {
-            for($j = 0; $j < $buttomArray[i].length(); $j++) {
-                $buttomArray[i][j] = '$num ' . $buttomArray[i][j];
+            for($j = 0; $j < $buttomArray[$i].length(); $j++) {
+                $buttomArray[i][j] = "$num " . $buttomArray[i][j];
                 $num++;
             }
         }
