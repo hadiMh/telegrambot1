@@ -10,11 +10,14 @@
     $update = file_get_contents("php://input");
     $update = json_decode($update, TRUE);
      
+    $name = $update['message']['from']['first_name'];
+    $userId = $update["message"]["from"]["id"];
+    $username = $update["message"]["from"]["username"];
     $chatId = $update["message"]["chat"]["id"];
     $message = $update["message"]["text"];
-    $userId = $update["message"]["chat"]["id"];
-    $username = $update["message"]["from"]["username"];
 
+    $query = "INSERT INTO 'table1'('name', 'from_id', 'from_firstname', 'from_username', 'chat_id', 'data')";
+    $query .=" VALUES ('$name', '$userId', '$username', '$chatId', '$message')";
 
     switch ($message) {
      

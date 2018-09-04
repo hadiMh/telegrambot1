@@ -61,30 +61,3 @@
         /* 9 */array(array('به پشت', 'روى شکم (دمر)'), array('به پهلو و کمى خم و دایره اى'), array('سر بر روى یک دست', 'سر زیر پتو یا ملافه...')),
         /* 10*/array(array('از جایى مى افتید.', 'مشغول جنگ و دعوا هستید.'), array('به دنبال کسى یا چیزى هستید.', 'پرواز مى کنید یا در آب غوطه ورید.'), array('اصلاً خواب نمى بینید.', 'معمولاً خواب هاى خوش مى بینید.')),
     );
-
-    function enNumToFa($string) {
-        return strtr($string, array('0'=>'۰', '1'=>'۱', '2'=>'۲', '3'=>'۳', '4'=>'۴', '5'=>'۵', '6'=>'۶', '7'=>'۷', '8'=>'۸', '9'=>'۹'));
-    }
-
-    function addNumbers($buttomArray) {
-        $num = 1;
-        for($i = 0; $i < count($buttomArray); $i++) {
-            for($j = 0; $j < count($buttomArray[$i]); $j++) {
-                $buttomArray[$i][$j] = enNumToFa($num)." - " . $buttomArray[$i][$j];
-                $num++;
-            }
-        }
-        return $buttomArray;
-    }
-
-    function returnEM($buttomArray) { // create a basic encoded markaup for givven buttoms
-        $buttomArray = addNumbers($buttomArray);
-        $rm = array(
-            'keyboard' => $buttomArray,
-            'one_time_keyboard' => false,
-            'resize_keyboard' => true,
-            'selective' => true
-        );
-        // question 1 encoded markup
-        return json_encode($rm, true);
-    }
