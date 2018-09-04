@@ -30,6 +30,8 @@
         case "شروع":
             sendMessage($chatId, "سوال 1:", $q1em);
             break;
+        case "1":
+            sendMessage($chatId, "سوال اول:", returnEM($buttoms[1]));
         default:
             sendMessage(684295622, "@$username:\n\n$message", $encodedMarkup);
             sendMessage($chatId, "پیام شما با موفقیت ارسال شد. شما میتوانید باز هم پیام ارسال کنید:", $encodedMarkup);
