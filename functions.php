@@ -31,3 +31,36 @@
         // question 1 encoded markup
         return json_encode($rm, true);
     }
+
+    function addGamePostionInDb() {
+        global $connection;
+        global $userId;
+        global $chatId;
+
+        $lastPostion = getGamePositionFromDb();
+        $newPostion = $lastPostion+1;
+
+        $query = "UPDATE table1 SET ";
+        $query .= "game_position = '$newPostion', ";
+        $query .= "WHERE from_id = $userId ";
+    
+        $result = mysqli_query($connection, $query);
+        if(!$result) {
+            sendMessage($chatId, "QUERY FAILED: " . mysqli_error($connection) ."\n-- ".$query, returnEM($buttoms[0]));
+        } else {
+            sendMessage($chatId, "RECORD UPDATED! before: $lastPostion -- after: ".getGamePositionFromDb() , returnEM($buttoms[0]));
+        }
+    }
+
+    function getGamePositionFromDb() {
+        global $connection;
+        global $userId;
+        global $chatId;
+
+        $query = "SELECT * FROM table1 WHERE from_id = $userId ";
+        $result = mysqli_query($connection, $query);
+        $row = mysqli_fetch_assoc($result);
+        $gamePostion = $row['game_position'];
+
+        return $gamePostion;
+    }
