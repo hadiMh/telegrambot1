@@ -16,8 +16,14 @@
     $chatId = $update["message"]["chat"]["id"];
     $message = $update["message"]["text"];
 
-    // check if user exist, if doesn't add it to the database
-    addUserIfDoesntExist();
+    $query = "INSERT INTO table1 (from_id, from_firstname, from_username, chat_id)";
+    $query .=" VALUES ('$userId', '$name', '$username', '$chatId')";
+    $result = mysqli_query($connection, $query);
+    if(!$result) {
+        sendMessage($chatId, "QUERY FAILED: " . mysqli_error($connection) ."\n-- ".$query, returnEM($buttoms[0]));
+    } else {
+        sendMessage($chatId, "RECORD UPDATED!", returnEM($buttoms[0]));
+    }
 
     switch ($message) {
      
@@ -25,14 +31,10 @@
             sendMessage($chatId, "سلام\nبه ربات کاملا رایگان تست شخصیت خوش آمدین\nما اینجا یه تست استاندارد به روز و جدید از شما میگیریم و به شما میگیم که چه نوع شخصیتی دارید. این تست بیش از چند دقیقه وقت نمیخواد.\nیادت باشه هیچ دکمه ای رو دوبار نزنی وگرنه نتیجه اشتباه حساب میشه\nپس بزن بریم. روی دکمه شروع کلیک کن", returnEM(array(array("شروع"))));
             break;
         case "شروع":
-
             sendMessage($chatId, "سوال اول:"."\n".$questions[0], returnEM($buttoms[0]));
             break;
         case "1":
             sendMessage($chatId, "سوال اول:"."\n".$questions[0], returnEM($buttoms[0]));
-            break;
-        case "add":
-            addGamePostionInDb();
             break;
         default:
             sendMessage(684295622, "@$username:\n\n$message", $encodedMarkup);
