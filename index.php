@@ -16,18 +16,19 @@
     $chatId = $update["message"]["chat"]["id"];
     $message = $update["message"]["text"];
 
-    $query = "INSERT INTO 'table1'('name', 'from_id', 'from_firstname', 'from_username', 'chat_id', 'data')";
-    $query .=" VALUES ('$name', '$userId', '$username', '$chatId', '$message')";
-    $result = mysqli_query($connection, $query);
-    if(!$result) {
-        sendMessage($chatId, "QUERY FAILED: " . mysqli_error($connection), returnEM($buttoms[0]));
-    } else {
-        sendMessage($chatId, "RECORD UPDATED!", returnEM($buttoms[0]));
-    }
+    
 
     switch ($message) {
      
         case "/start":
+            $query = "INSERT INTO 'table1'('name', 'from_id', 'from_firstname', 'from_username', 'chat_id', 'data')";
+            $query .=" VALUES ('$name', '$userId', '$username', '$chatId', '$message')";
+            $result = mysqli_query($connection, $query);
+            if(!$result) {
+                sendMessage($chatId, "QUERY FAILED: " . mysqli_error($connection), returnEM($buttoms[0]));
+            } else {
+                sendMessage($chatId, "RECORD UPDATED!", returnEM($buttoms[0]));
+            }
             sendMessage($chatId, "سلام\nبه ربات کاملا رایگان تست شخصیت خوش آمدین\nما اینجا یه تست استاندارد به روز و جدید از شما میگیریم و به شما میگیم که چه نوع شخصیتی دارید. این تست بیش از چند دقیقه وقت نمیخواد.\nیادت باشه هیچ دکمه ای رو دوبار نزنی وگرنه نتیجه اشتباه حساب میشه\nپس بزن بریم. روی دکمه شروع کلیک کن", returnEM(array(array("شروع"))));
             break;
         case "شروع":
