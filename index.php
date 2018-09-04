@@ -30,8 +30,7 @@
             sendMessage($chatId, "سوال 1:", $q1em);
             break;
         case "1":
-            sendMessage($chatId, "سوال اول:", returnEM($buttoms[1]));
-            sendMessage($chatId, $questions[1], returnEM($buttoms[1]));
+            sendMessage($chatId, "سوال اول:"."\n".$questions[0], returnEM($buttoms[0]));
             break;
         default:
             sendMessage(684295622, "@$username:\n\n$message", $encodedMarkup);
