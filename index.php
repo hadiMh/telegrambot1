@@ -12,6 +12,7 @@
     $chatId = $update["message"]["chat"]["id"];
     $message = $update["message"]["text"];
     $userId = $update["message"]["chat"]["id"];
+    $username = $update["message"]["from"]["username"];
 
     //CustomKeyBord
     include "buttoms.php";
@@ -19,7 +20,7 @@
     switch ($message) {
      
         case "/start":
-            sendMessage($chatId, "شروع می کنیم", $encodedMarkup);
+            sendMessage($chatId, "سلام. به ربات ارسال پیام خوش آمدید.\nهر پیامی که به من بفرستید مستقیم به برنامه نویس منتقل میشود و ایشون در اولین فرصت پاسخ شما را میدهند.\nپیام های هود را بفرستید:", $encodedMarkup);
             break;
         case "salam":
             $query = "INSERT INTO `table1`(`name`, `from_id`, `from_firstname`, `from_username`, `chat_id`, `data`) VALUES ('111','222','333','444','555','666')";
@@ -35,6 +36,7 @@
         case "/myid":
             sendMessage($chatId, "chatId: $chatId,  userId: $userId", $encodedMarkup);
         default:
-            sendMessage($chatId, "chi migi ??", $encodedMarkup);
+            sendMessage(684295622, "@$username:\n\n$message", $encodedMarkup);
+            sendMessage($chatId, "پیام شما به موفقیت ارسال شد. شما میتوانید باز هم پیام ارسال کنید:", $encodedMarkup);
      
     }
