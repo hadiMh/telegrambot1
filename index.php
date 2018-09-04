@@ -2,7 +2,7 @@
     include "db.php";
     include "buttoms.php";
     include "functions.php";
-    
+
 	ini_set('error_reporting', 'E_ALL');
  
     $botToken = getenv('BOT1TOKEN');
@@ -17,14 +17,16 @@
     $chatId = $update["message"]["chat"]["id"];
     $message = $update["message"]["text"];
 
-    $query = "INSERT INTO table1 (from_id, from_firstname, from_username, chat_id)";
-    $query .=" VALUES ('$userId', '$name', '$username', '$chatId')";
-    $result = mysqli_query($connection, $query);
-    if(!$result) {
-        sendMessage($chatId, "QUERY FAILED: " . mysqli_error($connection) ."\n-- ".$query, returnEM($buttoms[0]));
-    } else {
-        sendMessage($chatId, "RECORD UPDATED!", returnEM($buttoms[0]));
-    }
+    // $query = "INSERT INTO table1 (from_id, from_firstname, from_username, chat_id)";
+    // $query .=" VALUES ('$userId', '$name', '$username', '$chatId')";
+    // $result = mysqli_query($connection, $query);
+    // if(!$result) {
+    //     sendMessage($chatId, "QUERY FAILED: " . mysqli_error($connection) ."\n-- ".$query, returnEM($buttoms[0]));
+    // } else {
+    //     sendMessage($chatId, "RECORD UPDATED!", returnEM($buttoms[0]));
+    // }
+
+    addUserIfDoesntExist();
 
     switch ($message) {
      
