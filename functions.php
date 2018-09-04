@@ -39,7 +39,7 @@
         global $chatId;
         global $name;
         global $username;
-        
+
         $query = "SELECT * FROM table1 WHERE from_id = $userId ";
         $result = mysqli_query($connection, $query);
         $row_cnt = mysqli_num_rows($result);
@@ -48,11 +48,11 @@
             $query .=" VALUES ('$userId', '$name', '$username', '$chatId')";
             $result = mysqli_query($connection, $query);
             if(!$result) {
-                sendMessage($chatId, "QUERY FAILED: " . mysqli_error($connection) ."\n-- ".$query, returnEM($buttoms[0]));
+                sendMessage($chatId, "QUERY FAILED: " . mysqli_error($connection) ."\n-- ".$query, returnEM(array(array("worked!"))));
             } else {
-                sendMessage($chatId, "USER ADDED!", returnEM($buttoms[0]));
+                sendMessage($chatId, "USER ADDED!", returnEM(array(array("worked!"))));
             }
         } else {
-            sendMessage($chatId, "USER EXISTED!", returnEM($buttoms[0]));
+            sendMessage($chatId, "USER EXISTED!", returnEM(array(array("worked!"))));
         }
     }
