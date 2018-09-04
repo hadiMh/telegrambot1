@@ -46,9 +46,9 @@
     
         $result = mysqli_query($connection, $query);
         if(!$result) {
-            sendMessage($chatId, "QUERY FAILED: " . mysqli_error($connection) ."\n-- ".$query, returnEM($buttoms[0]));
+            sendMessage($chatId, "QUERY FAILED: " . mysqli_error($connection) ."\n-- ".$query);
         } else {
-            sendMessage($chatId, "RECORD UPDATED! before: $lastPostion -- after: ".getGamePositionFromDb() , returnEM($buttoms[0]));
+            sendMessage($chatId, "RECORD UPDATED! before: $lastPostion -- after: ".getGamePositionFromDb());
         }
     }
 
@@ -85,11 +85,11 @@
             $query .=" VALUES ('$userId', '$name', '$username', '$chatId')";
             $result = mysqli_query($connection, $query);
             if(!$result) {
-                sendMessage($chatId, "QUERY FAILED: " . mysqli_error($connection) ."\n-- ".$query, returnEM($buttoms[0]));
+                sendMessage($chatId, "QUERY FAILED: " . mysqli_error($connection) ."\n-- ".$query);
             } else {
-                sendMessage($chatId, "USER ADDED!", returnEM($buttoms[0]));
+                sendMessage($chatId, "USER ADDED!");
             }
         } else {
-            sendMessage($chatId, "USER EXISTED!", returnEM($buttoms[0]));
+            sendMessage($chatId, "USER EXISTED!");
         }
     }
