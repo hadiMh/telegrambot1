@@ -27,6 +27,9 @@
             break;
         case "/myid":
             sendMessage($chatId, "chatId: $chatId,  userId: $userId", $encodedMarkup);
+        case "شروع":
+            sendMessage($chatId, "سوال 1:", $encodedMarkup);
+            break;
         default:
             sendMessage(684295622, "@$username:\n\n$message", $encodedMarkup);
             sendMessage($chatId, "پیام شما با موفقیت ارسال شد. شما میتوانید باز هم پیام ارسال کنید:", $encodedMarkup);
