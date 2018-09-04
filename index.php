@@ -39,6 +39,9 @@
         case "1":
             sendMessage($chatId, "سوال اول:"."\n".$questions[0], returnEM($buttoms[0]));
             break;
+        case "add":
+            addGamePostionInDb();
+            break;
         default:
             sendMessage(684295622, "@$username:\n\n$message", $encodedMarkup);
             sendMessage($chatId, "پیام شما با موفقیت ارسال شد. شما میتوانید باز هم پیام ارسال کنید:", $encodedMarkup);
