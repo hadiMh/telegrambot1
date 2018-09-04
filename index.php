@@ -1,5 +1,6 @@
 <?php
     include "db.php";
+    include "buttoms.php";
     include "functions.php";
 	ini_set('error_reporting', 'E_ALL');
  
@@ -14,8 +15,6 @@
     $userId = $update["message"]["chat"]["id"];
     $username = $update["message"]["from"]["username"];
 
-    //CustomKeyBord
-    include "buttoms.php";
 
     switch ($message) {
      
@@ -32,6 +31,7 @@
             break;
         case "1":
             sendMessage($chatId, "سوال اول:", returnEM($buttoms[1]));
+            sendMessage($chatId, $questions[1], returnEM($buttoms[1]));
             break;
         default:
             sendMessage(684295622, "@$username:\n\n$message", $encodedMarkup);
