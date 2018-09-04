@@ -1,9 +1,5 @@
 <?php
-    $connection = mysqli_connect(getenv('BOT1DBSERVER'), getenv('BOT1DBUSERNAME'), getenv('BOT1DBPASSWORD'), getenv('BOT1DBTABLE'), '3306');
-    // var_dump(function_exists('mysqli_connect'));
-    if(!$connection) {
-        echo "Database connection failed. shittt!";
-    }
+    include "db.php";
 	ini_set('error_reporting', 'E_ALL');
  
     $botToken = getenv('BOT1TOKEN');
@@ -16,15 +12,7 @@
     $message = $update["message"]["text"];
 
     //CustomKeyBord
-    // answer 1
-    $option = array(array("salam", "Key1"), array("key2", "key3"));
-    $replyMarkup = array(
-    'keyboard' => $option,
-    'one_time_keyboard' => false,
-    'resize_keyboard' => true,
-    'selective' => true
-    );
-    $encodedMarkup = json_encode($replyMarkup, true);
+    include "buttoms.php";
      
     function sendMessage($chatId, $message, $r)
     {
