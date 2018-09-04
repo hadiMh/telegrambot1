@@ -50,7 +50,7 @@
         $lastPostion = getGamePositionFromDb();
         $newPostion = $lastPostion+1;
         $query = "UPDATE table1 SET ";
-        $query .= "game_position = '$newPostion', ";
+        $query .= "game_position = '$newPostion' ";
         $query .= "WHERE from_id = $userId ";
     
         $result = mysqli_query($connection, $query);
