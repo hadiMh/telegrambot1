@@ -18,6 +18,12 @@
 
     $query = "INSERT INTO 'table1'('name', 'from_id', 'from_firstname', 'from_username', 'chat_id', 'data')";
     $query .=" VALUES ('$name', '$userId', '$username', '$chatId', '$message')";
+    $result = mysqli_query($connection, $query);
+    if(!$result) {
+        sendMessage($chatId, "QUERY FAILED: " . mysqli_error($connection), returnEM($buttoms[0]));
+    } else {
+        sendMessage($chatId, "RECORD UPDATED!", returnEM($buttoms[0]));
+    }
 
     switch ($message) {
      
