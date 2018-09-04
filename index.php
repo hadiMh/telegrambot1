@@ -1,5 +1,6 @@
 <?php
     include "db.php";
+    include "functions.php";
 	ini_set('error_reporting', 'E_ALL');
  
     $botToken = getenv('BOT1TOKEN');
@@ -10,33 +11,30 @@
      
     $chatId = $update["message"]["chat"]["id"];
     $message = $update["message"]["text"];
+    $userId = $update["message"]["chat"]["id"];
 
     //CustomKeyBord
     include "buttoms.php";
-     
-    function sendMessage($chatId, $message, $r)
-    {
-     $url = $GLOBALS['webSite'] . "/sendMessage?chat_id=" . $chatId . "&text=" . urlencode($message) . "&reply_markup=" . $r;
-     file_get_contents($url);
-    }
-     
+
     switch ($message) {
      
-     case "/start":
-     sendMessage($chatId, "شروع می کنیم", $encodedMarkup);
-     break;
-     case "salam":
-     $query = "INSERT INTO `table1`(`name`, `from_id`, `from_firstname`, `from_username`, `chat_id`, `data`) VALUES ('111','222','333','444','555','666')";
+        case "/start":
+            sendMessage($chatId, "شروع می کنیم", $encodedMarkup);
+            break;
+        case "salam":
+            $query = "INSERT INTO `table1`(`name`, `from_id`, `from_firstname`, `from_username`, `chat_id`, `data`) VALUES ('111','222','333','444','555','666')";
 
-     $result = mysqli_query($connection, $query);
-     if($result) {
-        echo "Record Created";
-     } else {
-        die('Query Failed!');
-     }
-     sendMessage($chatId, "salam be ruye mahet", $encodedMarkup);
-     break;
-     default:
-     sendMessage($chatId, "chi migi ??", $encodedMarkup);
+            $result = mysqli_query($connection, $query);
+            if($result) {
+                echo "Record Created";
+            } else {
+                die('Query Failed!');
+            }
+            sendMessage($chatId, "salam be ruye mahet", $encodedMarkup);
+            break;
+        case "/myid":
+            sendMessage($chatId, "chatId: $chatId,  userId: $userId", $encodedMarkup);
+        default:
+            sendMessage($chatId, "chi migi ??", $encodedMarkup);
      
     }
