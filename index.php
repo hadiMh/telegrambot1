@@ -1,7 +1,8 @@
-<?php
+<?php 
     include "db.php";
     include "buttoms.php";
     include "functions.php";
+    
 	ini_set('error_reporting', 'E_ALL');
  
     $botToken = getenv('BOT1TOKEN');
