@@ -5,6 +5,7 @@ function myfunc(arrayString, arrayNumbers){
 		for(var j = 0; j < arrayNumbers[i]; j++){
 			result+= "'" + arrayString.shift() + "', ";
         }
+		result = result.slice(0, -2);
 		result += '), ';
     }
 	result = result.slice(0, -2);
