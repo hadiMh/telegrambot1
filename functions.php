@@ -199,7 +199,7 @@
         $answerJson = $row['user_answers'];
         $answerArray = json_decode($answerJson, true);
         for($i = 0; $i < $MAXNUMBER; $i++) {
-            $score += (int)$answerArray[$i];
+            $score += (int)$answerArray["$i"];
         }
 
         return $score;
