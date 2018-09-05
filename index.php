@@ -33,9 +33,7 @@
     if (hasUserStartedTheGame() && isItAValidChoise(faNumToEn($message))){    
         if(canUserContinueGame()){        
             addGamePostionInDb();
-            sendMessage($chatId, "22regex captured", returnEM($buttoms[0]));
             saveUserAnswer($userAnswer);
-            sendMessage($chatId, "33regex captured", returnEM($buttoms[0]));
         } else {
             
         }

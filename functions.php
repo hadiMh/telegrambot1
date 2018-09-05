@@ -30,13 +30,13 @@
             $query = "INSERT INTO table1 (from_id, from_firstname, from_username, chat_id,game_position, user_answers)";
             $query .=" VALUES ('$userId', '$name', '$username', '$chatId', 0, '{}')";
             $result = mysqli_query($connection, $query);
-            if(!$result) {
+            /* if(!$result) {
                 sendMessage($chatId, "QUERY FAILED: " . mysqli_error($connection) ."\n-- " . $query. " ". mysqli_error(), returnEM(array(array("worked!"))));
             } else {
                 sendMessage($chatId, "USER ADDED!", returnEM(array(array("worked!"))));
-            }
+            } */
         } else {
-            sendMessage($chatId, "USER EXISTED!".$row_cnt, returnEM(array(array("worked!"))));
+            /* sendMessage($chatId, "USER EXISTED!".$row_cnt, returnEM(array(array("worked!")))); */
         }
     }
 
@@ -88,11 +88,11 @@
         $query .= "WHERE from_id = $userId ";
     
         $result = mysqli_query($connection, $query);
-        if(!$result) {
+        /* if(!$result) {
             sendMessage($chatId, "QUERY FAILED: " . mysqli_error($connection) ."\n-- ".$query, returnEM(array(array("worked!"))));
         } else {
             sendMessage($chatId, "RECORD UPDATED! before: $lastPostion -- after: ".getGamePositionFromDb() , returnEM(array(array("worked!"))));
-        }
+        } */
     }
 
     function hasUserStartedTheGame() {
@@ -149,11 +149,11 @@
         $query .= "WHERE from_id = $userId ";
     
         $result = mysqli_query($connection, $query);
-        if(!$result) {
+        /* if(!$result) {
             sendMessage($chatId, "QUERY FAILED: " . mysqli_error($connection) ."\n-- ".$query."\n-- saveUserAnswer() function", returnEM(array(array("worked!"))));
         } else {
             sendMessage($chatId, "$newAnswerJson\nRECORD UPDATED! before: $lastPostion -- after: ".getGamePositionFromDb() . "\n-- saveUserAnswer() function" , returnEM(array(array("worked!"))));
-        }
+        } */
     }
 
     function sendQuestion() {
