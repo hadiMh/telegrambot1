@@ -72,6 +72,13 @@
         return json_encode($rm, true);
     }
 
+    function returnEMhide() { /* hide the buttom keyboard */
+        $rm = array(
+            'hide_keyboard' => true
+        );
+        return json_encode($rm, true);
+    }
+
     /* get the user game position from db */
     function getGamePositionFromDb() {
         global $connection;

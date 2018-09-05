@@ -32,7 +32,7 @@
     }
     $userAnswer = isItAValidChoise(faNumToEn($message));
     if(getGamePositionFromDb()==$MAXNUMBER+2){
-        sendMessage($chatId, "شما قبلا این آزمون را پاسخ داده اید. امتیاز شما 80 شده است.", returnRMt(array()));
+        sendMessage($chatId, "شما قبلا این آزمون را پاسخ داده اید. امتیاز شما 80 شده است.", returnEMhide());
     }else if (hasUserStartedTheGame() and isItAValidChoise(faNumToEn($message))){    
         if(getGamePositionFromDb()<=$MAXNUMBER+1){
             saveUserAnswer($userAnswer);
