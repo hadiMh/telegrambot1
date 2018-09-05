@@ -34,7 +34,7 @@
     if (hasUserStartedTheGame() and isItAValidChoise(faNumToEn($message))){    
         if(getGamePositionFromDb()<=$MAXNUMBER+1){
             saveUserAnswer($userAnswer);
-            if(getGamePositionFromDb()===$MAXNUMBER+1) addGamePostionInDb();
+            if(getGamePositionFromDb()==$MAXNUMBER+1) addGamePostionInDb();
         } else {
             
         }
