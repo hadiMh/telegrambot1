@@ -27,8 +27,8 @@
         $result = mysqli_query($connection, $query);
         $row_cnt = mysqli_num_rows($result);
         if(!$row_cnt){
-            $query = "INSERT INTO table1 (from_id, from_firstname, from_username, chat_id, user_answers)";
-            $query .=" VALUES ('$userId', '$name', '$username', '$chatId', '[]')";
+            $query = "INSERT INTO table1 (from_id, from_firstname, from_username, chat_id)";
+            $query .=" VALUES ('$userId', '$name', '$username', '$chatId')";
             $result = mysqli_query($connection, $query);
             if(!$result) {
                 sendMessage($chatId, "QUERY FAILED: " . mysqli_error($connection) ."\n-- " . $query, returnEM(array(array("worked!"))));
