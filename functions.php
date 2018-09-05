@@ -200,7 +200,7 @@
         $answerArray = json_decode($answerJson, true);
         for($i = 0; $i < $MAXNUMBER; $i++) {
             $score += (int)$answerArray["$i"];
-            sendMessage($chatId, (int)$answerArray["$i"]);
+            sendMessage($chatId, (int)$answerArray["$i"], returnEMhide());
         }
 
         return $score;
