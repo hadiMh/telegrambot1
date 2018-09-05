@@ -190,8 +190,9 @@
         global $connection;
         global $userId;
         global $chatId;
+        global $MAXNUMBER;
 
-        $score;
+        $score = 0;
         
         $query = "SELECT * FROM table1 WHERE from_id = $userId ";
         $result = mysqli_query($connection, $query);
@@ -200,6 +201,7 @@
         $answerArray = json_decode($answerJson, true);
         for($i = 1; $i < $MAXNUMBER+1; $i++) {
             $score += $answerArray["$i"];
+            $score = 20;
             sendMessage($chatId, "".$answerArray["$i"], returnEMhide());
         }
 
