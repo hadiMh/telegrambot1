@@ -32,7 +32,7 @@
     }
     $userAnswer = isItAValidChoise(faNumToEn($message));
     if (hasUserStartedTheGame() and isItAValidChoise(faNumToEn($message))){    
-        if(canUserContinueGame()){
+        if(getGamePositionFromDb()<$MAXNUMBER+1){
             saveUserAnswer($userAnswer);
         } else {
             
