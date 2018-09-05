@@ -137,7 +137,7 @@
         $query = "SELECT * FROM table1 WHERE from_id = $userId ";
         $result = mysqli_query($connection, $query);
         $row = mysqli_fetch_row($result);
-        $answerJson = $row['user_answers'];
+        $answerJson = $row[7];
         $answerArray = json_decode($answerJson);
         sendMessage($chatId, gettype($answerJson).gettype($answerArray), returnEM($buttoms[0]));
         $answerArray[$gamePosition] = $answer;
