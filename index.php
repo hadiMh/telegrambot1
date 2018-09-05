@@ -27,11 +27,15 @@
     /* check if the user exists. if not add it to the database */
     addUserIfDoesntExist();
     $userAnswer = isItAValidChoise(faNumToEn($message));
+    sendMessage($chatId, $userAnswer, returnEM($buttoms[0]));
     if (isItAValidChoise(faNumToEn($message))){
         sendMessage($chatId, "regex captured", returnEM($buttoms[0]));
         if(canUserContinueGame()){
+            sendMessage($chatId, "11regex captured", returnEM($buttoms[0]));
             addGamePostionInDb();
+            sendMessage($chatId, "22regex captured", returnEM($buttoms[0]));
             saveUserAnswer($userAnswer);
+            sendMessage($chatId, "33regex captured", returnEM($buttoms[0]));
         } else {
             
         }
