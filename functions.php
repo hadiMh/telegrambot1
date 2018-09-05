@@ -97,6 +97,7 @@
 
     function hasUserStartedTheGame() {
         $userGamePosition = getGamePositionFromDb();
+        sendMessage($chatId, $userGamePosition, returnEM(array(array("worked!"))));
         if($userGamePosition === 0)
             return 0;
         return 1;
