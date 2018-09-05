@@ -62,6 +62,16 @@
         return json_encode($rm, true);
     }
 
+    function returnEMt($buttomArray) { // create a basic encoded markaup for givven texts
+        $rm = array(
+            'keyboard' => $buttomArray,
+            'one_time_keyboard' => false,
+            'resize_keyboard' => true,
+            'selective' => true
+        );
+        return json_encode($rm, true);
+    }
+
     /* get the user game position from db */
     function getGamePositionFromDb() {
         global $connection;
@@ -98,7 +108,7 @@
     function hasUserStartedTheGame() {
         $userGamePosition = getGamePositionFromDb();
         sendMessage($chatId, $userGamePosition, returnEM(array(array("worked!"))));
-        if($userGamePosition === 0)
+        if($userGamePosition == 0)
             return 0;
         return 1;
     }
