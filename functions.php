@@ -139,11 +139,11 @@
         $row = mysqli_fetch_assoc($result);
         $answerJson = $row['user_answers'];
         $answerArray = json_decode($answerJson, true);
-        sendMessage($chatId, gettype($answerJson).gettype($answerArray), returnEM($buttoms[0]));
+        // sendMessage($chatId, gettype($answerJson).gettype($answerArray), returnEM($buttoms[0]));
         $answerArray[$gamePosition] = $answer;
-        sendMessage($chatId, "111regex captured", returnEM($buttoms[0]));
+        // sendMessage($chatId, "111regex captured", returnEM($buttoms[0]));
         $newAnswerJson = json_encode($answerArray);
-        sendMessage($chatId, $newAnswerJson, returnEM($buttoms[0]));
+        // sendMessage($chatId, $newAnswerJson, returnEM($buttoms[0]));
         $query = "UPDATE table1 SET ";
         $query .= "user_answers = '$newAnswerJson' ";
         $query .= "WHERE from_id = $userId ";
@@ -153,5 +153,16 @@
             sendMessage($chatId, "QUERY FAILED: " . mysqli_error($connection) ."\n-- ".$query."\n-- saveUserAnswer() function", returnEM(array(array("worked!"))));
         } else {
             sendMessage($chatId, "$newAnswerJson\nRECORD UPDATED! before: $lastPostion -- after: ".getGamePositionFromDb() . "\n-- saveUserAnswer() function" , returnEM(array(array("worked!"))));
+        }
+    }
+
+    function sendQuestion() {
+        global $buttoms;
+        global $connection;
+        global $userId;
+        global $chatId;
+        if(canUserContinueGame()){
+            $gamePosition = getGamePositionFromDb();
+            sendMessage($chatId, enNumToFa($gamePosition+1) . "- " . $question[$gamePosition+1], returnEm($buttoms[$gamePosition+1]));
         }
     }
