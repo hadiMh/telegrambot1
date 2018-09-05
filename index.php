@@ -31,12 +31,12 @@
         sendQuestion();
     }
     $userAnswer = isItAValidChoise(faNumToEn($message));
-    if (hasUserStartedTheGame() and isItAValidChoise(faNumToEn($message))){    
+    if(getGamePositionFromDb()==$MAXNUMBER+2){
+        sendMessage($chatId, "شما قبلا این آزمون را پاسخ داده اید. امتیاز شما 80 شده است.", returnRMt(array()));
+    }else if (hasUserStartedTheGame() and isItAValidChoise(faNumToEn($message))){    
         if(getGamePositionFromDb()<=$MAXNUMBER+1){
             saveUserAnswer($userAnswer);
             if(getGamePositionFromDb()==$MAXNUMBER+1) addGamePostionInDb();
-        } else {
-            
         }
     } else {
         switch ($message) {
