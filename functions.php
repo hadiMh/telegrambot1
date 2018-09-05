@@ -129,7 +129,9 @@
 
     function saveUserAnswer($answer) {
         $gamePosition = getGamePositionFromDb();
+        sendMessage($chatId, "-1-1-1regex captured", returnEM($buttoms[0]));
         $query = "SELECT * FROM table1 WHERE from_id = $userId ";
+        sendMessage($chatId, "000regex captured", returnEM($buttoms[0]));
         $result = mysqli_query($connection, $query);
 sendMessage($chatId, "111regex captured", returnEM($buttoms[0]));
         $row = $result->fetch_row();
