@@ -176,6 +176,5 @@
         if(canUserContinueGame()){
             $gamePosition = getGamePositionFromDb();
             sendMessage($chatId, $questions[$gamePosition-1], returnEm($buttoms[$gamePosition-1]));
-            addGamePostionInDb();
         }
     }

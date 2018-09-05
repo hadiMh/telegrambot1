@@ -27,6 +27,7 @@
     /* check if the user exists. if not add it to the database */
     addUserIfDoesntExist();
     if(hasUserStartedTheGame() and canUserContinueGame()){
+        addGamePostionInDb();
         sendQuestion();
     }
     $userAnswer = isItAValidChoise(faNumToEn($message));
@@ -43,6 +44,7 @@
                 sendMessage($chatId, "سلام\nبه ربات کاملا رایگان تست شخصیت خوش آمدین\nما اینجا یه تست استاندارد به روز و جدید از شما میگیریم و به شما میگیم که چه نوع شخصیتی دارید. این تست بیش از چند دقیقه وقت نمیخواد.\nیادت باشه هیچ دکمه ای رو دوبار نزنی وگرنه نتیجه اشتباه حساب میشه\nپس بزن بریم. روی دکمه شروع کلیک کن", returnEMt(array(array("شروع"))));
                 break;
             case "شروع":
+                addGamePostionInDb();
                 sendQuestion();
                 break;
             default:
