@@ -46,7 +46,8 @@
                 sendMessage($chatId, "سوال اول:"."\nn".$questions[0], returnEM($buttoms[0]));
                 break;
             case "1":
-                sendMessage($chatId, "سوال اول:"."\nn".$questions[0], returnEM($buttoms[0]));
+                addGamePostionInDb();
+                sendQuestion();
                 break;
             case "add":
                 addGamePostionInDb();
