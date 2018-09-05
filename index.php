@@ -40,10 +40,10 @@
         case "add":
             addGamePostionInDb();
             break;
-        case '/^[0-9]/':
+        case "/^[0-9]/":
             sendMessage($chatId, "regex captured", returnEM($buttoms[0]));
             break;
         default:
             sendMessage(684295622, "@$username:\nn\n$message");
-            sendMessage($chatId, "پیام شما با موفقیت ارسال شد. شما میتوانید باز هم پیام ارسال کنید:");
+            sendMessage($chatId, "پیام شما با موفقیت ارسال شد. شما میتوانید باز هم پیام ارسال کنید:n");
     }
