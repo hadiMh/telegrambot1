@@ -150,7 +150,7 @@
         $answerJson = $row['user_answers'];
         $answerArray = json_decode($answerJson, true);
         // sendMessage($chatId, gettype($answerJson).gettype($answerArray), returnEM($buttoms[0]));
-        $answerArray[$gamePosition] = $answer;
+        $answerArray[$gamePosition-1] = $answer;
         // sendMessage($chatId, "111regex captured", returnEM($buttoms[0]));
         $newAnswerJson = json_encode($answerArray);
         // sendMessage($chatId, $newAnswerJson, returnEM($buttoms[0]));
