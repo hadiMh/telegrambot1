@@ -198,9 +198,9 @@
         $row = mysqli_fetch_assoc($result);
         $answerJson = $row['user_answers'];
         $answerArray = json_decode($answerJson, true);
-        for($i = 0; $i < $MAXNUMBER; $i++) {
+        for($i = 1; $i < $MAXNUMBER+1; $i++) {
             $score += (int)$answerArray["$i"];
-            sendMessage($chatId, (int)$answerArray["$i"], returnEMhide());
+            sendMessage($chatId, "".(int)$answerArray["$i"], returnEMhide());
         }
 
         return $score;
