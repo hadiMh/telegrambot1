@@ -238,7 +238,7 @@
             $answerJson = $row['user_answers'];
             $answerArray = json_decode($answerJson, true);
             for($i = 1; $i < $MAXNUMBER+1; $i++) {
-                $score += $marks[(int)$answerArray["$i"]];
+                $score += $marks[$i][(int)$answerArray["$i"]];
             }
 
             setTheUserScore($score);
