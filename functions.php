@@ -224,6 +224,7 @@
         global $userId;
         global $chatId;
         global $MAXNUMBER;
+        global $marks;
         if(hasScoreCalculated()) {
             return getTheUserScore();
         }
