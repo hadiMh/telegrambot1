@@ -36,7 +36,11 @@
     }else if (hasUserStartedTheGame() and isItAValidChoise(faNumToEn($message))){    
         if(getGamePositionFromDb()<=$MAXNUMBER+1){
             saveUserAnswer($userAnswer);
-            if(getGamePositionFromDb()==$MAXNUMBER+1) addGamePostionInDb();
+            if(getGamePositionFromDb()==$MAXNUMBER+1) 
+            {
+                addGamePostionInDb();
+                sendMessage($chatId, "تبریک. شما به همه سوالای این آزمون جواب دادین. امتیاز شما 89 می باشد.", returnEMhide());
+            }
         }
     } else {
         switch ($message) {
