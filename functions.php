@@ -174,6 +174,6 @@
         global $chatId;
         if(canUserContinueGame()){
             $gamePosition = getGamePositionFromDb();
-            sendMessage($chatId, enNumToFa($gamePosition+1) . "-n " . $question[$gamePosition+1], returnEm($buttoms[$gamePosition+1]));
+            sendMessage($chatId, enNumToFa($gamePosition+1) . "- " . $question[$gamePosition+1], returnEm($buttoms[$gamePosition+1]));
         }
     }
