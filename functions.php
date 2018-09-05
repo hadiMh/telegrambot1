@@ -104,3 +104,16 @@
             return 1;
         return 0;
     }
+
+    /* checks if the user send an answer of one of the questions */
+    /* 
+    * @params  $text : the text that user sent to the robot    
+    */
+    function ifItIsAValidChoise($text) {
+        $matches;
+        preg_match('/^[0-9]/', $text, $matches, PREG_OFFSET_CAPTURE);
+        $json = json_encode($matches);
+        if ($json === "[]") /* invalid answer */
+            return 0;
+        return $matches[0][0]; /* valid answer */
+    }

@@ -6,8 +6,8 @@
     ini_set('error_log', dirname(__FILE__) . '/log.txt');
     ini_set('error_reporting', 'E_ALL');
 
-    include "db.php";
-    include "buttoms.php";
+    include "db.php"; /* connects to the database */
+    include "buttoms.php"; /* contains: questions, answers, choises, marks and buttoms */
     include "functions.php";
 
     $botToken = getenv('BOT1TOKEN');
@@ -39,6 +39,9 @@
             break;
         case "add":
             addGamePostionInDb();
+            break;
+        case '/^[0-9]/':
+            sendMessage($chatId, "regex captured", returnEM($buttoms[0]));
             break;
         default:
             sendMessage(684295622, "@$username:\nn\n$message");
