@@ -139,7 +139,8 @@
         $row = $result->fetch_row();
         $answerJson = $row['user_answers'];
         $answerArray = json_decode($answerJson);
-        sendMessage($chatId, $answerArray, returnEM($buttoms[0]));
+        sendMessage($chatId, gettype($answerArray), returnEM($buttoms[0]));
+
         array_push($answerArray, $gamePosition, $answer);
         sendMessage($chatId, "111regex captured", returnEM($buttoms[0]));
         $newAnswerJson = json_encode($answerArray);
