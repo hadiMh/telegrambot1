@@ -36,7 +36,7 @@
                 sendMessage($chatId, "USER ADDED!", returnEM(array(array("worked!"))));
             }
         } else {
-            sendMessage($chatId, "USER EXISTED!", returnEM(array(array("worked!"))));
+            sendMessage($chatId, "USER EXISTED!".$row_cnt, returnEM(array(array("worked!"))));
         }
     }
 
