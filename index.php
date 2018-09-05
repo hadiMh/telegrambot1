@@ -27,23 +27,25 @@
     /* check if the user exists. if not add it to the database */
     addUserIfDoesntExist();
 
-    switch ($message) {
-        case "/start":
-            sendMessage($chatId, "سلام\nبه ربات کاملا رایگان تست شخصیت خوش آمدین\nما اینجا یه تست استاندارد به روز و جدید از شما میگیریم و به شما میگیم که چه نوع شخصیتی دارید. این تست بیش از چند دقیقه وقت نمیخواد.\nیادت باشه هیچ دکمه ای رو دوبار نزنی وگرنه نتیجه اشتباه حساب میشه\nپس بزن بریم. روی دکمه شروع کلیک کن", returnEM(array(array("شروع"))));
-            break;
-        case "شروع":
-            sendMessage($chatId, "سوال اول:"."\nn".$questions[0], returnEM($buttoms[0]));
-            break;
-        case "1":
-            sendMessage($chatId, "سوال اول:"."\nn".$questions[0], returnEM($buttoms[0]));
-            break;
-        case "add":
-            addGamePostionInDb();
-            break;
-        case (preg_match("/^[0-9]/", $name) ? true : false):
-            sendMessage($chatId, "regex captured", returnEM($buttoms[0]));
-            break;
-        default:
-            sendMessage(684295622, "@$username:\nn\n$message");
-            sendMessage($chatId, "پیام شما با موفقیت ارسال شد. شما میتوانید باز هم پیام ارسال کنید:n");
+    if (isItAValidChoise(faNumToEn($message))){
+        sendMessage($chatId, "regex captured", returnEM($buttoms[0]));
+    } else {
+        switch ($message) {
+            case "/start":
+                sendMessage($chatId, "سلام\nبه ربات کاملا رایگان تست شخصیت خوش آمدین\nما اینجا یه تست استاندارد به روز و جدید از شما میگیریم و به شما میگیم که چه نوع شخصیتی دارید. این تست بیش از چند دقیقه وقت نمیخواد.\nیادت باشه هیچ دکمه ای رو دوبار نزنی وگرنه نتیجه اشتباه حساب میشه\nپس بزن بریم. روی دکمه شروع کلیک کن", returnEM(array(array("شروع"))));
+                break;
+            case "شروع":
+                sendMessage($chatId, "سوال اول:"."\nn".$questions[0], returnEM($buttoms[0]));
+                break;
+            case "1":
+                sendMessage($chatId, "سوال اول:"."\nn".$questions[0], returnEM($buttoms[0]));
+                break;
+            case "add":
+                addGamePostionInDb();
+                break;
+            default:
+                sendMessage(684295622, "@$username:\nn\n$message");
+                sendMessage($chatId, "پیام شما با موفقیت ارسال شد. شما میتوانید باز هم پیام ارسال کنید:");
+        }
     }
+    
