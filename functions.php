@@ -191,7 +191,7 @@
         global $userId;
         global $chatId;
 
-        $score = 0;
+        $score;
         
         $query = "SELECT * FROM table1 WHERE from_id = $userId ";
         $result = mysqli_query($connection, $query);
@@ -199,8 +199,8 @@
         $answerJson = $row['user_answers'];
         $answerArray = json_decode($answerJson, true);
         for($i = 1; $i < $MAXNUMBER+1; $i++) {
-            $score += (int)$answerArray["$i"];
-            sendMessage($chatId, "".(int)$answerArray["$i"], returnEMhide());
+            $score += $answerArray["$i"];
+            sendMessage($chatId, "".$answerArray["$i"], returnEMhide());
         }
 
         return $score;
