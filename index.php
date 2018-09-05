@@ -43,14 +43,8 @@
                 sendMessage($chatId, "سلام\nبه ربات کاملا رایگان تست شخصیت خوش آمدین\nما اینجا یه تست استاندارد به روز و جدید از شما میگیریم و به شما میگیم که چه نوع شخصیتی دارید. این تست بیش از چند دقیقه وقت نمیخواد.\nیادت باشه هیچ دکمه ای رو دوبار نزنی وگرنه نتیجه اشتباه حساب میشه\nپس بزن بریم. روی دکمه شروع کلیک کن", returnEMt(array(array("شروع"))));
                 break;
             case "شروع":
-                sendMessage($chatId, "سوال اول:"."\nn".$questions[0], returnEM($buttoms[0]));
-                break;
-            case "1":
                 addGamePostionInDb();
                 sendQuestion();
-                break;
-            case "add":
-                addGamePostionInDb();
                 break;
             default:
                 sendMessage(684295622, "@$username:\nn\n$message");
