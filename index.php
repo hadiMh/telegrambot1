@@ -29,6 +29,12 @@
 
     if (isItAValidChoise(faNumToEn($message))){
         sendMessage($chatId, "regex captured", returnEM($buttoms[0]));
+        if(canUserContinueGame()){
+            addGamePostionInDb();
+            saveUserAnswer();
+        } else {
+            
+        }
     } else {
         switch ($message) {
             case "/start":

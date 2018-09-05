@@ -28,7 +28,7 @@
         $row_cnt = mysqli_num_rows($result);
         if(!$row_cnt){
             $query = "INSERT INTO table1 (from_id, from_firstname, from_username, chat_id,game_position, user_answers)";
-            $query .=" VALUES ('$userId', '$name', '$username', '$chatId', 0, '[]')";
+            $query .=" VALUES ('$userId', '$name', '$username', '$chatId', 0, '{}')";
             $result = mysqli_query($connection, $query);
             if(!$result) {
                 sendMessage($chatId, "QUERY FAILED: " . mysqli_error($connection) ."\n-- " . $query. " ". mysqli_error(), returnEM(array(array("worked!"))));
@@ -102,12 +102,12 @@
         return 1;
     }
 
-    function hasUserEndedTheGame() {
+    function canUserContinueGame() {
         global $MAXNUMBER;
         $userGamePosition = getGamePositionFromDb();
         if($userGamePosition >= $MAXNUMBER)
-            return 1;
-        return 0;
+            return false;
+        return true;
     }
 
     /* checks if the user send an answer of one of the questions */
@@ -128,5 +128,23 @@
     }
 
     function saveUserAnswer($answer) {
+        $gamePosition = getGamePositionFromDb();
+        $query = "SELECT * FROM table1 WHERE from_id = $userId ";
+        $result = mysqli_query($connection, $query);
+        $row = $result->fetch_row();
+        $answerJson = $row['user_answers'];
+        $answerArray = json_decode($answerJson);
+        $answerArray[$gamePosition] = $answer;
+        $newAnswerJson = json_encode($answerArray);
 
+        $query = "UPDATE table1 SET ";
+        $query .= "user_answers = '$newAnswerJson' ";
+        $query .= "WHERE from_id = $userId ";
+    
+        $result = mysqli_query($connection, $query);
+        if(!$result) {
+            sendMessage($chatId, "QUERY FAILED: " . mysqli_error($connection) ."\n-- ".$query."\n-- saveUserAnswer() function", returnEM(array(array("worked!"))));
+        } else {
+            sendMessage($chatId, "$newAnswerJson\nRECORD UPDATED! before: $lastPostion -- after: ".getGamePositionFromDb() , returnEM(array(array("worked!"))));
+        }
     }
