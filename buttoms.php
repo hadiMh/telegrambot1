@@ -1,14 +1,18 @@
 <?php
-// answer 1
-    $option = array(array("salam", "Key1"), array("key2", "key3"), array("شروع"));
-    $replyMarkup = array(
-        'keyboard' => $option,
-        'one_time_keyboard' => false,
-        'resize_keyboard' => true,
-        'selective' => true
-    );
-    $encodedMarkup = json_encode($replyMarkup, true);
+    /* defining the game numbers. these can be changed for diferent games */
+    $MAXNUMBER = 10; // the count of the questions.
 
+    // answer 1
+    // $option = array(array("salam", "Key1"), array("key2", "key3"), array("شروع"));
+    // $replyMarkup = array(
+    //     'keyboard' => $option,
+    //     'one_time_keyboard' => false,
+    //     'resize_keyboard' => true,
+    //     'selective' => true
+    // );
+    // $encodedMarkup = json_encode($replyMarkup, true);
+
+    /* the exam's questions */
     $questions = array(
         "۱) چه موقع از روز بهترین و آرام ترین احساس را دارید؟",
         "۲) معمولاً چگونه راه مى روید؟",
@@ -23,6 +27,7 @@
         "جواب تست:تست روانشناسی شخصیت جدید"
     );
 
+    /* the exam's questions' choises */
     $choises = array(
         /* 1 */array("صبح", "عصر و غروب", "شب"),
         /* 2 */array("نسبتاً سریع، با قدم هاى بلند،", "نسبتاً سریع، با قدمهاى کوتاه ولى تند و پشت سر هم", "آهسته تر، با سرى صاف روبرو", "آهسته و سربه زیر", "خیلى آهسته"),
@@ -36,6 +41,7 @@
         /* 10*/array("از جایى مى افتید.", "مشغول جنگ و دعوا هستید.", "به دنبال کسى یا چیزى هستید.", "پرواز مى کنید یا در آب غوطه ورید.", "اصلاً خواب نمى بینید.", "معمولاً خواب هاى خوش مى بینید.")
     );
 
+    /* the exam's questions' choises' marks */
     $marks = array(
         /* 1 */array("2", "4", "6"),                      //  1
         /* 2 */array("6", "4", "7", "2", "1"),            //  2
@@ -49,6 +55,7 @@
         /* 10*/array("4", "2", "3", "5", "6", "1")        // 10
     );
 
+    /* buttoms created from the questions' choises array */
     $buttoms = array(
         /* 1 */array(array('صبح'), array('عصر و غروب', 'شب')),
         /* 2 */array(array('نسبتاً سریع، با قدم هاى بلند،'), array('نسبتاً سریع، با قدمهاى کوتاه ولى تند و پشت سر هم'), array('آهسته تر، با سرى صاف روبرو'), array('آهسته و سربه زیر', 'خیلى آهسته')),
