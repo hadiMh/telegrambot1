@@ -138,7 +138,7 @@
         $result = mysqli_query($connection, $query);
         $row = mysqli_fetch_assoc($result);
         $answerJson = $row['user_answers'];
-        $answerArray = json_decode($answerJson);
+        $answerArray = json_decode($answerJson, true);
         sendMessage($chatId, gettype($answerJson).gettype($answerArray), returnEM($buttoms[0]));
         $answerArray[$gamePosition] = $answer;
         sendMessage($chatId, "111regex captured", returnEM($buttoms[0]));
