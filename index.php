@@ -27,7 +27,7 @@
     /* check if the user exists. if not add it to the database */
     addUserIfDoesntExist();
 
-    if (isItAValidChoise(faNumToEn($message))){
+    if (isItAValidChoise(faNumToEn($message)) && $userAnswer = isItAValidChoise(faNumToEn($message))){
         sendMessage($chatId, "regex captured", returnEM($buttoms[0]));
         if(canUserContinueGame()){
             addGamePostionInDb();
