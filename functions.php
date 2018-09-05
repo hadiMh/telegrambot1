@@ -133,23 +133,17 @@
         global $userId;
         global $chatId;
 
-sendMessage($chatId, "-2-2-regex captured", returnEM($buttoms[0]));
         $gamePosition = getGamePositionFromDb();
-sendMessage($chatId, "-1-1-1regex captured", returnEM($buttoms[0]));
         $query = "SELECT * FROM table1 WHERE from_id = $userId ";
-sendMessage($chatId, "000regex captured", returnEM($buttoms[0]));
         $result = mysqli_query($connection, $query);
-sendMessage($chatId, "111regex captured", returnEM($buttoms[0]));
         $row = $result->fetch_row();
-sendMessage($chatId, "222regex captured", returnEM($buttoms[0]));
         $answerJson = $row['user_answers'];
-sendMessage($chatId, "333regex captured", returnEM($buttoms[0]));
         $answerArray = json_decode($answerJson);
-sendMessage($chatId, "444regex captured", returnEM($buttoms[0]));
+        sendMessage($chatId, $answerArray, returnEM($buttoms[0]));
         $answerArray[$gamePosition] = $answer;
-sendMessage($chatId, "555regex captured", returnEM($buttoms[0]));
+        sendMessage($chatId, "111regex captured", returnEM($buttoms[0]));
         $newAnswerJson = json_encode($answerArray);
-sendMessage($chatId, "saveUserAnsver", returnEM(array(array("worked!"))));
+        sendMessage($chatId, $newAnswerJson, returnEM($buttoms[0]));
         $query = "UPDATE table1 SET ";
         $query .= "user_answers = '$newAnswerJson' ";
         $query .= "WHERE from_id = $userId ";
