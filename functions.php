@@ -26,7 +26,7 @@
         $query = "SELECT * FROM table1 WHERE from_id = $userId ";
         $result = mysqli_query($connection, $query);
         $row_cnt = mysqli_num_rows($result);
-        if($row_cnt === 0){
+        if(!$row_cnt){
             $query = "INSERT INTO table1 (from_id, from_firstname, from_username, chat_id, user_answers)";
             $query .=" VALUES ('$userId', '$name', '$username', '$chatId', ".json_encode(array()).")";
             $result = mysqli_query($connection, $query);
