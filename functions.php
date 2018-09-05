@@ -169,11 +169,12 @@
 
     function sendQuestion() {
         global $buttoms;
+        global $questions;
         global $connection;
         global $userId;
         global $chatId;
         if(canUserContinueGame()){
             $gamePosition = getGamePositionFromDb();
-            sendMessage($chatId, enNumToFa($gamePosition) . "- " . $question[$gamePosition], returnEm($buttoms[$gamePosition]));
+            sendMessage($chatId, enNumToFa($gamePosition) . "- " . $questions[$gamePosition-1], returnEm($buttoms[$gamePosition-1]));
         }
     }
