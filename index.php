@@ -26,11 +26,11 @@
 
     /* check if the user exists. if not add it to the database */
     addUserIfDoesntExist();
-    if(hasUserStartedTheGame() && canUserContinueGame()){
+    if(hasUserStartedTheGame() and canUserContinueGame()){
         sendQuestion();
     }
     $userAnswer = isItAValidChoise(faNumToEn($message));
-    if (hasUserStartedTheGame() && isItAValidChoise(faNumToEn($message))){    
+    if (hasUserStartedTheGame() and isItAValidChoise(faNumToEn($message))){    
         if(canUserContinueGame()){        
             addGamePostionInDb();
             saveUserAnswer($userAnswer);
