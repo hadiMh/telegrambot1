@@ -31,7 +31,7 @@
             $query .=" VALUES ('$userId', '$name', '$username', '$chatId', '[]')";
             $result = mysqli_query($connection, $query);
             if(!$result) {
-                sendMessage($chatId, "QUERY FAILED: " . mysqli_error($connection) ."\n-- " . $query, returnEM(array(array("worked!"))));
+                sendMessage($chatId, "QUERY FAILED: " . mysqli_error($connection) ."\n-- " . $query. " ". mysql_error(), returnEM(array(array("worked!"))));
             } else {
                 sendMessage($chatId, "USER ADDED!", returnEM(array(array("worked!"))));
             }
