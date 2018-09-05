@@ -136,7 +136,7 @@
         $answerArray = json_decode($answerJson);
         $answerArray[$gamePosition] = $answer;
         $newAnswerJson = json_encode($answerArray);
-
+        sendMessage($chatId, "saveUserAnsver", returnEM(array(array("worked!"))));
         $query = "UPDATE table1 SET ";
         $query .= "user_answers = '$newAnswerJson' ";
         $query .= "WHERE from_id = $userId ";
@@ -145,6 +145,6 @@
         if(!$result) {
             sendMessage($chatId, "QUERY FAILED: " . mysqli_error($connection) ."\n-- ".$query."\n-- saveUserAnswer() function", returnEM(array(array("worked!"))));
         } else {
-            sendMessage($chatId, "$newAnswerJson\nRECORD UPDATED! before: $lastPostion -- after: ".getGamePositionFromDb() , returnEM(array(array("worked!"))));
+            sendMessage($chatId, "$newAnswerJson\nRECORD UPDATED! before: $lastPostion -- after: ".getGamePositionFromDb() . "\n-- saveUserAnswer() function" , returnEM(array(array("worked!"))));
         }
     }
