@@ -32,14 +32,14 @@
     }
     $userAnswer = isItAValidChoise(faNumToEn($message));
     if(getGamePositionFromDb()==$MAXNUMBER+2){
-        sendMessage($chatId, "شما قبلا این آزمون را پاسخ داده اید. امتیاز شما 80 شده است.", returnEMhide());
+        sendMessage($chatId, "شما قبلا این آزمون را پاسخ داده اید. امتیاز شما ".calculateUserScore()." شده است.", returnEMhide());
     }else if (hasUserStartedTheGame() and isItAValidChoise(faNumToEn($message))){    
         if(getGamePositionFromDb()<=$MAXNUMBER+1){
             saveUserAnswer($userAnswer);
             if(getGamePositionFromDb()==$MAXNUMBER+1) 
             {
                 addGamePostionInDb();
-                sendMessage($chatId, "تبریک. شما به همه سوالای این آزمون جواب دادین. امتیاز شما 89 می باشد.", returnEMhide());
+                sendMessage($chatId, "تبریک. شما به همه سوالای این آزمون جواب دادین. امتیاز شما ".calculateUserScore()." می باشد.", returnEMhide());
             }
         }
     } else {
