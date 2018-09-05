@@ -184,3 +184,23 @@
             sendMessage($chatId, $questions[$gamePosition-1], returnEm($buttoms[$gamePosition-1]));
         }
     }
+
+    function calculateUserScore() {
+        global $choises;
+        global $connection;
+        global $userId;
+        global $chatId;
+
+        $score = 0;
+        
+        $query = "SELECT * FROM table1 WHERE from_id = $userId ";
+        $result = mysqli_query($connection, $query);
+        $row = mysqli_fetch_assoc($result);
+        $answerJson = $row['user_answers'];
+        $answerArray = json_decode($answerJson, true);
+        for($i = 0; $i < $MAXNUMBER; $i++) {
+            $score += (int)$answerArray[$i];
+        }
+
+        return $score;
+    }
