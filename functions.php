@@ -128,6 +128,7 @@
     }
 
     function saveUserAnswer($answer) {
+        sendMessage($chatId, "-2-2-regex captured", returnEM($buttoms[0]));
         $gamePosition = getGamePositionFromDb();
         sendMessage($chatId, "-1-1-1regex captured", returnEM($buttoms[0]));
         $query = "SELECT * FROM table1 WHERE from_id = $userId ";
