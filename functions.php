@@ -185,23 +185,63 @@
         }
     }
 
-    function calculateUserScore() {
-        global $choises;
+    function hasScoreCalculated() {
         global $connection;
         global $userId;
-        global $chatId;
-        global $MAXNUMBER;
 
         $score = 0;
         
         $query = "SELECT * FROM table1 WHERE from_id = $userId ";
         $result = mysqli_query($connection, $query);
         $row = mysqli_fetch_assoc($result);
-        $answerJson = $row['user_answers'];
-        $answerArray = json_decode($answerJson, true);
-        for($i = 1; $i < $MAXNUMBER+1; $i++) {
-            $score += (int)$answerArray["$i"];
-        }
+        $mystring = $row['final_score'];
+        if($mystring == 0)
+            return false;
+        return true;
+    }
 
-        return $score;
+    function getTheUserScore() {
+        global $connection;
+
+        $score = 0;
+        
+        $query = "SELECT * FROM table1 WHERE from_id = $userId ";
+        $result = mysqli_query($connection, $query);
+        $row = mysqli_fetch_assoc($result);
+        $mystring = $row['final_score'];
+        return $mystring;
+    }
+
+    function setTheUserScore($score) {
+        $query = "INSERT INTO table1 (final_score)";
+        $query .=" VALUES ($score)";
+        $result = mysqli_query($connection, $query);
+    }
+
+    function calculateUserScore() {
+        global $choises;
+        global $connection;
+        global $userId;
+        global $chatId;
+        global $MAXNUMBER;
+        if(hasScoreCalculated()) {
+            return getTheUserScore();
+        }
+        else {
+            $score = 0;
+        
+            /* calculate the sum of the answers from the user's answers' array in database */
+            $query = "SELECT * FROM table1 WHERE from_id = $userId ";
+            $result = mysqli_query($connection, $query);
+            $row = mysqli_fetch_assoc($result);
+            $answerJson = $row['user_answers'];
+            $answerArray = json_decode($answerJson, true);
+            for($i = 1; $i < $MAXNUMBER+1; $i++) {
+                $score += $marks[(int)$answerArray["$i"]];
+            }
+
+            setTheUserScore($score);
+
+            return $score;
+        }
     }
