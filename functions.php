@@ -1,4 +1,10 @@
 <?php
+    
+    include "db.php"; /* connects to the database */
+    include "buttoms.php"; /* contains: questions, answers, choises, marks and buttoms */
+    include "functions.php";
+
+
     function sendMessage($chatId, $message, $r)
     {
         $url = $GLOBALS['webSite'] . "/sendMessage?chat_id=" . $chatId . "&text=" . urlencode($message) . "&reply_markup=" . $r;
@@ -128,11 +134,11 @@
     }
 
     function saveUserAnswer($answer) {
-        sendMessage($chatId, "-2-2-regex captured", returnEM($buttoms[0]));
+sendMessage($chatId, "-2-2-regex captured", returnEM($buttoms[0]));
         $gamePosition = getGamePositionFromDb();
-        sendMessage($chatId, "-1-1-1regex captured", returnEM($buttoms[0]));
+sendMessage($chatId, "-1-1-1regex captured", returnEM($buttoms[0]));
         $query = "SELECT * FROM table1 WHERE from_id = $userId ";
-        sendMessage($chatId, "000regex captured", returnEM($buttoms[0]));
+sendMessage($chatId, "000regex captured", returnEM($buttoms[0]));
         $result = mysqli_query($connection, $query);
 sendMessage($chatId, "111regex captured", returnEM($buttoms[0]));
         $row = $result->fetch_row();
