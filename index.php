@@ -40,7 +40,7 @@
         case "add":
             addGamePostionInDb();
             break;
-        case "/^[0-9]/":
+        case (preg_match("/^[0-9]/", $name) ? true : false):
             sendMessage($chatId, "regex captured", returnEM($buttoms[0]));
             break;
         default:
