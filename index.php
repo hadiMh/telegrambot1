@@ -1,11 +1,14 @@
 <?php 
+    ini_set('display_errors', 1);
+    ini_set('log_errors', 1);
+    ini_set('error_log', dirname(__FILE__) . '/log.txt');
+    ini_set('error_reporting', 'E_ALL');
+
     include "db.php";
     include "buttoms.php";
     include "functions.php";
 
-	ini_set('error_reporting', 'E_ALL');
- 
-    $botToken = getenv('BOT1TOKEN');
+    $botToken = '561851246:AAEwMFjL_qb1lf5O_e9tmGWnr7AvUdoDiEU';
     $webSite = "https://api.telegram.org/bot" . $botToken;
      
     $update = file_get_contents("php://input");
@@ -25,7 +28,7 @@
     // } else {
     //     sendMessage($chatId, "RECORD UPDATED!", returnEM($buttoms[0]));
     // }
-
+    sendMessage($chatId, "hello there!", returnEM($buttoms[0]));
     addUserIfDoesntExist();
 
     switch ($message) {

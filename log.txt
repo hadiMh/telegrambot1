@@ -1,0 +1,45 @@
+[05-Sep-2018 10:05:18 UTC] PHP Warning:  mysqli_connect(): Server sent charset (255) unknown to the client. Please, report to the developers in C:\wamp64\www\php_workspace\telegrambot1\db.php on line 2
+[05-Sep-2018 10:05:18 UTC] PHP Stack trace:
+[05-Sep-2018 10:05:18 UTC] PHP   1. {main}() C:\wamp64\www\php_workspace\telegrambot1\index.php:0
+[05-Sep-2018 10:05:18 UTC] PHP   2. include() C:\wamp64\www\php_workspace\telegrambot1\index.php:7
+[05-Sep-2018 10:05:18 UTC] PHP   3. mysqli_connect() C:\wamp64\www\php_workspace\telegrambot1\db.php:2
+[05-Sep-2018 10:05:18 UTC] PHP Warning:  mysqli_connect(): (HY000/2054): Server sent charset unknown to the client. Please, report to the developers in C:\wamp64\www\php_workspace\telegrambot1\db.php on line 2
+[05-Sep-2018 10:05:18 UTC] PHP Stack trace:
+[05-Sep-2018 10:05:18 UTC] PHP   1. {main}() C:\wamp64\www\php_workspace\telegrambot1\index.php:0
+[05-Sep-2018 10:05:18 UTC] PHP   2. include() C:\wamp64\www\php_workspace\telegrambot1\index.php:7
+[05-Sep-2018 10:05:18 UTC] PHP   3. mysqli_connect() C:\wamp64\www\php_workspace\telegrambot1\db.php:2
+[05-Sep-2018 10:05:19 UTC] PHP Warning:  file_get_contents(https://api.telegram.org/bot561851246:AAEwMFjL_qb1lf5O_e9tmGWnr7AvUdoDiEU/sendMessage?chat_id=&amp;text=hello+there%21&amp;reply_markup={&quot;keyboard&quot;:[[&quot;\u06f1 - \u0635\u0628\u062d&quot;],[&quot;\u06f2 - \u0639\u0635\u0631 \u0648 \u063a\u0631\u0648\u0628&quot;,&quot;\u06f3 - \u0634\u0628&quot;]],&quot;one_time_keyboard&quot;:false,&quot;resize_keyboard&quot;:true,&quot;selective&quot;:true}): failed to open stream: No connection could be made because the target machine actively refused it.
+ in C:\wamp64\www\php_workspace\telegrambot1\functions.php on line 5
+[05-Sep-2018 10:05:19 UTC] PHP Stack trace:
+[05-Sep-2018 10:05:19 UTC] PHP   1. {main}() C:\wamp64\www\php_workspace\telegrambot1\index.php:0
+[05-Sep-2018 10:05:19 UTC] PHP   2. sendMessage() C:\wamp64\www\php_workspace\telegrambot1\index.php:31
+[05-Sep-2018 10:05:19 UTC] PHP   3. file_get_contents() C:\wamp64\www\php_workspace\telegrambot1\functions.php:5
+[05-Sep-2018 10:05:19 UTC] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in C:\wamp64\www\php_workspace\telegrambot1\functions.php on line 72
+[05-Sep-2018 10:05:19 UTC] PHP Stack trace:
+[05-Sep-2018 10:05:19 UTC] PHP   1. {main}() C:\wamp64\www\php_workspace\telegrambot1\index.php:0
+[05-Sep-2018 10:05:19 UTC] PHP   2. addUserIfDoesntExist() C:\wamp64\www\php_workspace\telegrambot1\index.php:32
+[05-Sep-2018 10:05:19 UTC] PHP   3. mysqli_query() C:\wamp64\www\php_workspace\telegrambot1\functions.php:72
+[05-Sep-2018 10:05:19 UTC] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in C:\wamp64\www\php_workspace\telegrambot1\functions.php on line 73
+[05-Sep-2018 10:05:19 UTC] PHP Stack trace:
+[05-Sep-2018 10:05:19 UTC] PHP   1. {main}() C:\wamp64\www\php_workspace\telegrambot1\index.php:0
+[05-Sep-2018 10:05:19 UTC] PHP   2. addUserIfDoesntExist() C:\wamp64\www\php_workspace\telegrambot1\index.php:32
+[05-Sep-2018 10:05:19 UTC] PHP   3. mysqli_num_rows() C:\wamp64\www\php_workspace\telegrambot1\functions.php:73
+[05-Sep-2018 10:05:23 UTC] PHP Warning:  file_get_contents(https://api.telegram.org/bot561851246:AAEwMFjL_qb1lf5O_e9tmGWnr7AvUdoDiEU/sendMessage?chat_id=&amp;text=USER+EXISTED%21&amp;reply_markup={&quot;keyboard&quot;:[[&quot;\u06f1 - worked!&quot;]],&quot;one_time_keyboard&quot;:false,&quot;resize_keyboard&quot;:true,&quot;selective&quot;:true}): failed to open stream: No connection could be made because the target machine actively refused it.
+ in C:\wamp64\www\php_workspace\telegrambot1\functions.php on line 5
+[05-Sep-2018 10:05:23 UTC] PHP Stack trace:
+[05-Sep-2018 10:05:23 UTC] PHP   1. {main}() C:\wamp64\www\php_workspace\telegrambot1\index.php:0
+[05-Sep-2018 10:05:23 UTC] PHP   2. addUserIfDoesntExist() C:\wamp64\www\php_workspace\telegrambot1\index.php:32
+[05-Sep-2018 10:05:23 UTC] PHP   3. sendMessage() C:\wamp64\www\php_workspace\telegrambot1\functions.php:84
+[05-Sep-2018 10:05:23 UTC] PHP   4. file_get_contents() C:\wamp64\www\php_workspace\telegrambot1\functions.php:5
+[05-Sep-2018 10:05:25 UTC] PHP Warning:  file_get_contents(https://api.telegram.org/bot561851246:AAEwMFjL_qb1lf5O_e9tmGWnr7AvUdoDiEU/sendMessage?chat_id=684295622&amp;text=%40%3A%0A%0A&amp;reply_markup={&quot;keyboard&quot;:[[&quot;salam&quot;,&quot;Key1&quot;],[&quot;key2&quot;,&quot;key3&quot;],[&quot;\u0634\u0631\u0648\u0639&quot;]],&quot;one_time_keyboard&quot;:false,&quot;resize_keyboard&quot;:true,&quot;selective&quot;:true}): failed to open stream: No connection could be made because the target machine actively refused it.
+ in C:\wamp64\www\php_workspace\telegrambot1\functions.php on line 5
+[05-Sep-2018 10:05:25 UTC] PHP Stack trace:
+[05-Sep-2018 10:05:25 UTC] PHP   1. {main}() C:\wamp64\www\php_workspace\telegrambot1\index.php:0
+[05-Sep-2018 10:05:25 UTC] PHP   2. sendMessage() C:\wamp64\www\php_workspace\telegrambot1\index.php:49
+[05-Sep-2018 10:05:25 UTC] PHP   3. file_get_contents() C:\wamp64\www\php_workspace\telegrambot1\functions.php:5
+[05-Sep-2018 10:05:26 UTC] PHP Warning:  file_get_contents(https://api.telegram.org/bot561851246:AAEwMFjL_qb1lf5O_e9tmGWnr7AvUdoDiEU/sendMessage?chat_id=&amp;text=%D9%BE%DB%8C%D8%A7%D9%85+%D8%B4%D9%85%D8%A7+%D8%A8%D8%A7+%D9%85%D9%88%D9%81%D9%82%DB%8C%D8%AA+%D8%A7%D8%B1%D8%B3%D8%A7%D9%84+%D8%B4%D8%AF.+%D8%B4%D9%85%D8%A7+%D9%85%DB%8C%D8%AA%D9%88%D8%A7%D9%86%DB%8C%D8%AF+%D8%A8%D8%A7%D8%B2+%D9%87%D9%85+%D9%BE%DB%8C%D8%A7%D9%85+%D8%A7%D8%B1%D8%B3%D8%A7%D9%84+%DA%A9%D9%86%DB%8C%D8%AF%3A&amp;reply_markup={&quot;keyboard&quot;:[[&quot;salam&quot;,&quot;Key1&quot;],[&quot;key2&quot;,&quot;key3&quot;],[&quot;\u0634\u0631\u0648\u0639&quot;]],&quot;one_time_keyboard&quot;:false,&quot;resize_keyboard&quot;:true,&quot;selective&quot;:true}): failed to open stream: No connection could be made because the target machine actively refused it.
+ in C:\wamp64\www\php_workspace\telegrambot1\functions.php on line 5
+[05-Sep-2018 10:05:26 UTC] PHP Stack trace:
+[05-Sep-2018 10:05:26 UTC] PHP   1. {main}() C:\wamp64\www\php_workspace\telegrambot1\index.php:0
+[05-Sep-2018 10:05:26 UTC] PHP   2. sendMessage() C:\wamp64\www\php_workspace\telegrambot1\index.php:50
+[05-Sep-2018 10:05:26 UTC] PHP   3. file_get_contents() C:\wamp64\www\php_workspace\telegrambot1\functions.php:5
