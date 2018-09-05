@@ -116,7 +116,7 @@
     function canUserContinueGame() {
         global $MAXNUMBER;
         $userGamePosition = getGamePositionFromDb();
-        if($userGamePosition >= $MAXNUMBER)
+        if($userGamePosition > $MAXNUMBER)
             return false;
         return true;
     }
@@ -174,6 +174,6 @@
         global $chatId;
         if(canUserContinueGame()){
             $gamePosition = getGamePositionFromDb();
-            sendMessage($chatId, enNumToFa($gamePosition+1) . "- " . $question[$gamePosition+1], returnEm($buttoms[$gamePosition+1]));
+            sendMessage($chatId, enNumToFa($gamePosition) . "- " . $question[$gamePosition], returnEm($buttoms[$gamePosition]));
         }
     }
