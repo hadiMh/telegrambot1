@@ -31,7 +31,7 @@
         sendMessage($chatId, "regex captured", returnEM($buttoms[0]));
         if(canUserContinueGame()){
             addGamePostionInDb();
-            saveUserAnswer();
+            saveUserAnswer($userAnswer);
         } else {
             
         }
