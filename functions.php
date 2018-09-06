@@ -242,14 +242,14 @@
             $answerJson = $row['user_answers'];
             sendMessage($chatId, print_r(json_decode($answerJson, true), true), returnEMhide());
             $answerArray = json_decode($answerJson, true);
-            for($i = 1; $i < $MAXNUMBER+1; $i++) {
-                sendMessage($chatId, "q$i---------------->", returnEMhide());
-                sendMessage($chatId, "user mark-".$marks[$i-1][$answerArray[($i-1)]], returnEMhide());
-                sendMessage($chatId, "user choise-".$answerArray[($i-1)], returnEMhide()); /* error: returns 0 */
-                sendMessage($chatId,  "marks array-".print_r($marks[$i-1],true), returnEMhide()); /* error: returns 0 */
+            for($i = 0; $i < $MAXNUMBER; $i++) {
+                sendMessage($chatId, "q".($i+1)."---------------->", returnEMhide());
+                sendMessage($chatId, "user mark-".print_r($marks[$i][$answerArray[($i+1)]],true), returnEMhide());
+                sendMessage($chatId, "user choise-".print_r($answerArray[($i+1)], returnEMhide()), true); /* error: returns 0 */
+                sendMessage($chatId,  "marks array-".print_r($marks[$i],true), returnEMhide()); /* error: returns 0 */
                 sendMessage($chatId, "score-".$score, returnEMhide());
                 // sendMessage($chatId, "-----", returnEMhide());
-                $sum = $marks[$i-1][$answerArray[($i-1)]];
+                $sum = $marks[$i][$answerArray[($i+1)]];
                 sendMessage($chatId, "sum:".$sum." type:".gettype($sum), returnEMhide());
                 $score = $score + $sum;
                 sendMessage($chatId, "score-".$score, returnEMhide());
