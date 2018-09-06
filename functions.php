@@ -242,6 +242,9 @@
             $answerArray = json_decode($answerJson, true);
             for($i = 1; $i < $MAXNUMBER+1; $i++) {
                 sendMessage($chatId, $marks[$i-1][(int)$answerArray["'".($i)."'"]], returnEMhide());
+                sendMessage($chatId, (int)$answerArray["'".($i)."'"], returnEMhide());
+                sendMessage($chatId, ($i), returnEMhide());
+                sendMessage($chatId, "-----", returnEMhide());
                 $score += $marks[$i-1][(int)$answerArray["'".($i-1)."'"]];
             }
 
