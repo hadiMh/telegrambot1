@@ -244,12 +244,12 @@
             $answerArray = json_decode($answerJson, true);
             for($i = 1; $i < $MAXNUMBER+1; $i++) {
                 global $score;
-                sendMessage($chatId, $marks[$i-1][$answerArray[($i)]], returnEMhide());
-                sendMessage($chatId, $answerArray[($i)], returnEMhide()); /* error: returns 0 */
+                sendMessage($chatId, $marks[$i-1][$answerArray[($i-1)]], returnEMhide());
+                sendMessage($chatId, $answerArray[($i-1)], returnEMhide()); /* error: returns 0 */
                 sendMessage($chatId, print_r($marks[$i-1],true), returnEMhide()); /* error: returns 0 */
                 sendMessage($chatId, $score, returnEMhide());
                 // sendMessage($chatId, "-----", returnEMhide());
-                $sum = gettype($marks[$i-1][$answerArray[($i)]]);
+                $sum = gettype($marks[$i-1][$answerArray[($i-1)]]);
                 sendMessage($chatId, "sum:".$sum, returnEMhide());
                 $score = $score + $sum;
                 sendMessage($chatId, $score, returnEMhide());
