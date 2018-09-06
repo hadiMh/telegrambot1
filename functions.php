@@ -249,7 +249,8 @@
                 sendMessage($chatId, print_r($marks[$i-1],true), returnEMhide()); /* error: returns 0 */
                 sendMessage($chatId, $score, returnEMhide());
                 // sendMessage($chatId, "-----", returnEMhide());
-                $sum = $marks[$i-1][$answerArray[($i)]];
+                $sum = (int)$marks[$i-1][$answerArray[($i)]];
+                sendMessage($chatId, "sum:".$sum, returnEMhide());
                 $score = $score + $sum;
                 sendMessage($chatId, $score, returnEMhide());
             }
