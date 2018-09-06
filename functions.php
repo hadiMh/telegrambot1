@@ -241,6 +241,7 @@
             $answerJson = $row['user_answers'];
             $answerArray = json_decode($answerJson, true);
             for($i = 1; $i < $MAXNUMBER+1; $i++) {
+                sendMessage($chatId, $marks[$i-1][(int)$answerArray["'".($i-1)."'"]], returnEMhide());
                 $score += $marks[$i-1][(int)$answerArray["'".($i-1)."'"]];
             }
 
