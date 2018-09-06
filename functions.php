@@ -214,8 +214,10 @@
 
     function setTheUserScore($score) {
         global $connection;
-        $query = "INSERT INTO table1 (final_score)";
-        $query .=" VALUES ($score)";
+        global $userId;
+        $query = "UPDATE table1 SET ";
+        $query .= "final_score = $score ";
+        $query .= "WHERE from_id = $userId ";
         $result = mysqli_query($connection, $query);
     }
 
