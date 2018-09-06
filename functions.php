@@ -240,7 +240,7 @@
             $row = mysqli_fetch_assoc($result);
             sendMessage($chatId, print_r($row,true), returnEMhide());
             $answerJson = $row['user_answers'];
-            sendMessage($chatId, print_r($answerJson,true), returnEMhide());
+            sendMessage($chatId, print_r(json_decode($answerJson, true), true), returnEMhide());
             $answerArray = json_decode($answerJson, true);
             for($i = 1; $i < $MAXNUMBER+1; $i++) {
                 // sendMessage($chatId, $marks[$i-1][(int)$answerArray["'".($i)."'"]], returnEMhide());
