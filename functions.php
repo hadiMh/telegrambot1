@@ -213,6 +213,7 @@
     }
 
     function setTheUserScore($score) {
+        global $connection;
         $query = "INSERT INTO table1 (final_score)";
         $query .=" VALUES ($score)";
         $result = mysqli_query($connection, $query);
