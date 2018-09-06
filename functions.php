@@ -246,7 +246,7 @@
                 sendMessage($chatId, $marks[$i-1][$answerArray[($i)]], returnEMhide());
                 sendMessage($chatId, $answerArray[($i)], returnEMhide()); /* error: returns 0 */
                 sendMessage($chatId, print_r($marks[$i-1],true), returnEMhide()); /* error: returns 0 */
-                // sendMessage($chatId, ($i), returnEMhide());
+                sendMessage($chatId, $score, returnEMhide());
                 // sendMessage($chatId, "-----", returnEMhide());
                 $score += $marks[$i-1][$answerArray[($i)]];
             }
