@@ -352,7 +352,7 @@
         sendMessage($chatId, "--".print_r($invitesArray), returnEMhide());
         $invitesArray[count($invitesArray)] = $userId;
         // file_put_contents('log.txt', file_get_contents('log.txt').print_r($invitesArray));
-        addInvitesCountByOne($inviterId);
+        addInvitesCountByOne($inviterId, getInvitesCount($inviterId));
         sendTheInvitedUsernameToInviter($inviterId);
         $newInviteJson = json_encode($invitesArray);
         $query = "UPDATE table1 SET ";
