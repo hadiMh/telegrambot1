@@ -254,6 +254,7 @@
     function showTheCharacteristic() {
         global $characters;
         global $userId;
+        global $chwatId;
         global $connection;
 
         $query = "SELECT * FROM table1 WHERE from_id = $userId ";
