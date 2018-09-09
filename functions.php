@@ -261,7 +261,7 @@
         $result = mysqli_query($connection, $query);
         $row = mysqli_fetch_assoc($result);
         $answer = (int)$row['final_score'];
-        sendMessage($chatId, $answer, returnEm($buttoms[$gamePosition-1]));
+        sendMessage($chatId, $answer, returnEMhide());
         $characteristic = "";
 
         if($answer>=61)
@@ -277,5 +277,5 @@
         else if($answer<=20)
             $characteristic = $characters[0];
 
-        sendMessage($chatId, $characteristic, returnEM($buttoms[0]));
+        sendMessage($chatId, $characteristic, returnEMhide());
     }
