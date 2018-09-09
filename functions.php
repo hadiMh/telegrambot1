@@ -299,7 +299,7 @@
         $query = "SELECT * FROM table1 WHERE from_id = $inviterId ";
         $result = mysqli_query($connection, $query);
         $row = mysqli_fetch_assoc($result);
-        $invites_count = (int)$row['invites_list'];
+        $invites_count = (int)$row['invites_count'];
         return $invites_count;
     }
 
