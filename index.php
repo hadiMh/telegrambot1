@@ -34,7 +34,7 @@
     }
     sendMessage($userId, $message, returnEMhide());
     if (strpos($message, '/start') !== false) {
-        if(strlen($message)>6) {
+        if(1) {
             preg_match('(\d+)', $message, $matches);
             sendMessage($userId, "hello", returnEMhide());
             addInvitedUserIdToInviterList($matches[0]);
