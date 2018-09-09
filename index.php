@@ -32,6 +32,13 @@
         addGamePostionInDb();
         sendQuestion();
     }
+    sendMessage($userId, $message, returnEMhide());
+    if (strpos($message, '/start') !== false) {
+        if(strlen($message)>6) {
+            preg_match('(\d+)', $message, $matches);
+            sendMessage($userId, "hello", returnEMhide());
+            addInvitedUserIdToInviterList($matches[0]);
+        }
     $userAnswer = isItAValidChoise(faNumToEn($message));
     if(getGamePositionFromDb()==$MAXNUMBER+2){
         sendMessage($chatId, "شما قبلا این آزمون را پاسخ داده اید. امتیاز شما ".calculateUserScore()." شده است.", returnEMhide());
@@ -42,13 +49,7 @@
                 }
                 break;
         }
-        sendMessage($userId, $message, returnEMhide());
-        if (strpos($message, '/start') !== false) {
-            if(strlen($message)>6) {
-                preg_match('(\d+)', $message, $matches);
-                sendMessage($userId, "hello", returnEMhide());
-                addInvitedUserIdToInviterList($matches[0]);
-            }
+        
         // showTheCharacteristic();
     }else if (hasUserStartedTheGame() and isItAValidChoise(faNumToEn($message))){    
         if(getGamePositionFromDb()<=$MAXNUMBER+1){
