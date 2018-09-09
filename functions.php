@@ -342,12 +342,24 @@
         return false;
     }
 
+    function userClickOnHisInviteLink($inviterId) {
+        global $connection;
+        global $userId;
+        if($userId === $inviterId)
+            return true;
+        return false;
+    }
+
     function addInvitedUserIdToInviterList($inviterId) {
         global $connection;
         global $userId;
         global $chatId;
         if(!doesInviterIdExist($inviterId)) {
             sendMessage($chatId, "inviter id doesnt exist", returnEMhide());
+            return;
+        }
+        if(userClickOnHisInviteLink($inviterId)) {
+            sendMessage($chatId, "you shouldn't click on your own invitation link. just send it to your friends personaly or in chats so they can use the bot.", returnEMhide());
             return;
         }
         $query = "SELECT * FROM table1 WHERE from_id = $inviterId ";
