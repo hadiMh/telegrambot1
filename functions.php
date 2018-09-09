@@ -275,5 +275,5 @@
         else if($answer<=20)
             $characteristic = $characters[0];
 
-        sendMessage($chatId, ":شخصیت شما بر اساس این آزمون\n" . $characteristic, returnEMhide());
+        sendMessage($chatId, "شخصیت شما بر اساس این آزمون:\n" . $characteristic, returnEMhide());
     }
