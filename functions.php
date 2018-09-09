@@ -349,7 +349,7 @@
         $invites_list = $row['invites_list'];
         $invites_count = (int)$row['invites_list']; // number of invited people
         $invitesArray = json_decode($invites_list, true);
-        sendMessage($chatId, print_r($invitesArray), returnEMhide());
+        sendMessage($chatId, "--".print_r($invitesArray), returnEMhide());
         $invitesArray[$invites_count] = $userId;
         // file_put_contents('log.txt', file_get_contents('log.txt').print_r($invitesArray));
         addInvitesCountByOne($inviterId);
