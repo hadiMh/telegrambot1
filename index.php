@@ -42,6 +42,7 @@
                 }
                 break;
         }
+        sendMessage($userId, $message, returnEMhide());
         if (strpos($message, '/start') !== false) {
             if(strlen($message)>6) {
                 preg_match('(\d+)', $message, $matches);
