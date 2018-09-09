@@ -202,6 +202,7 @@
 
     function getTheUserScore() {
         global $connection;
+        global $userId;
 
         $score = 0;
         
