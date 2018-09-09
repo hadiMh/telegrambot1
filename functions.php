@@ -254,16 +254,14 @@
     function showTheCharacteristic() {
         global $characters;
         global $userId;
-        global $chwatId;
+        global $chatId;
         global $connection;
 
         $query = "SELECT * FROM table1 WHERE from_id = $userId ";
         $result = mysqli_query($connection, $query);
         $row = mysqli_fetch_assoc($result);
         $answer = (int)$row['final_score'];
-        sendMessage($chatId, $answer, returnEMhide());
         $characteristic = "";
-
         if($answer>=61)
             $characteristic = $characters[61];
         else if($answer>=51)
