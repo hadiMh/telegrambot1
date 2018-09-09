@@ -40,7 +40,7 @@
             if(getGamePositionFromDb()==$MAXNUMBER+1) 
             {
                 addGamePostionInDb();
-                sendMessage($chatId, "تبریک. شما به همه سوالای این آزمون جواب دادین. امتیاز شما ".calculateUserScore()." می باشد.", returnEMhide());
+                sendMessage($chatId, "تبریک. شما به همه سوالای این آزمون جواب دادین. امتیاز شما ".calculateUserScore()." می باشد.", returnEMt($btns['invite']));
                 showTheCharacteristic();
             }
         }
