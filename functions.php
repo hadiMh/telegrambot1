@@ -348,8 +348,7 @@
         $row = mysqli_fetch_assoc($result);
         $invites_list = $row['invites_list'];
         $invites_count = (int)$row['invites_list']; // number of invited people
-        $invitesArray = json_decode($invites_list, true);
-        $invitesArray[$invites_count] = $userId;
+        array_push($invitesArray ,$userId);
         addInvitesCountByOne($inviterId);
         sendTheInvitedUsernameToInviter($inviterId);
         $newInviteJson = json_encode($invitesArray);

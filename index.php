@@ -36,7 +36,6 @@
     if (strpos($message, '/start') !== false) {
         if(1) {
             preg_match('(\d+)', $message, $matches);
-            sendMessage($userId, "hello", returnEMhide());
             addInvitedUserIdToInviterList($matches[0]);
         }
     $userAnswer = isItAValidChoise(faNumToEn($message));
