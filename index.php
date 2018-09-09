@@ -33,7 +33,14 @@
     $userAnswer = isItAValidChoise(faNumToEn($message));
     if(getGamePositionFromDb()==$MAXNUMBER+2){
         sendMessage($chatId, "شما قبلا این آزمون را پاسخ داده اید. امتیاز شما ".calculateUserScore()." شده است.", returnEMhide());
-        showTheCharacteristic();
+        switch ($message) {
+            case "شخصیت من":
+                if(!checkInvitesAreEnough()){
+                    sendMessage($chatId, " برای دیدن نتیجه آزمون باید برای سه نفر را لینک زیر را بفرستید. زمانی که سه نفر از طریق لینک زیر وارد ربات شوند نتیجه آزمون با تمام توضیحات مهم روانشناسی برای شما ارسال میشود. نکته جالب اسن است که هر زمان کسی با لینک شما وارد ربات شود، ربات به شما پیامی ارسال میکند و شما را مطلع میکند", returnEMhide());
+                }
+                break;
+        }
+        // showTheCharacteristic();
     }else if (hasUserStartedTheGame() and isItAValidChoise(faNumToEn($message))){    
         if(getGamePositionFromDb()<=$MAXNUMBER+1){
             saveUserAnswer($userAnswer);
@@ -52,11 +59,6 @@
             case "شروع":
                 addGamePostionInDb();
                 sendQuestion();
-                break;
-            case "شخصیت من":
-                if(!checkInvitesAreEnough()){
-                    sendMessage($chatId, " برای دیدن نتیجه آزمون باید برای سه نفر را لینک زیر را بفرستید. زمانی که سه نفر از طریق لینک زیر وارد ربات شوند نتیجه آزمون با تمام توضیحات مهم روانشناسی برای شما ارسال میشود. نکته جالب اسن است که هر زمان کسی با لینک شما وارد ربات شود، ربات به شما پیامی ارسال میکند و شما را مطلع میکند", returnEMhide());
-                }
                 break;
             default:
                 sendMessage(684295622, "@$username:\nn\n$message");
