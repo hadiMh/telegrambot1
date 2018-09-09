@@ -256,6 +256,7 @@
         global $userId;
         global $chatId;
         global $connection;
+        global $btns;
 
         $query = "SELECT * FROM table1 WHERE from_id = $userId ";
         $result = mysqli_query($connection, $query);
@@ -275,5 +276,5 @@
         else if($answer<=20)
             $characteristic = $characters[0];
 
-        sendMessage($chatId, "شخصیت شما بر اساس این آزمون:\n" . $characteristic, returnEMhide());
+        sendMessage($chatId, "شخصیت شما بر اساس این آزمون:\n" . $characteristic, returnEMt($btns['invite']));
     }
