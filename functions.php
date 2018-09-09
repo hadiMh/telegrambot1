@@ -343,9 +343,8 @@
     }
 
     function userClickOnHisInviteLink($inviterId) {
-        global $connection;
         global $userId;
-        if($userId === $inviterId)
+        if($userId == $inviterId)
             return true;
         return false;
     }
