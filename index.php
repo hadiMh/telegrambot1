@@ -24,6 +24,8 @@
     $chatId = $update["message"]["chat"]["id"];
     $message = $update["message"]["text"];
 
+    sendMessage($chatId, print_r($update, true), returnEMhide());
+
     /* check if the user exists. if not add it to the database */
     addUserIfDoesntExist();
     if(hasUserStartedTheGame() and canUserContinueGame()){
@@ -36,7 +38,7 @@
         switch ($message) {
             case "شخصیت من":
                 if(!checkInvitesAreEnough()){
-                    sendMessage($chatId, " برای دیدن نتیجه آزمون باید برای سه نفر را لینک زیر را بفرستید. زمانی که سه نفر از طریق لینک زیر وارد ربات شوند نتیجه آزمون با تمام توضیحات مهم روانشناسی برای شما ارسال میشود. نکته جالب اسن است که هر زمان کسی با لینک شما وارد ربات شود، ربات به شما پیامی ارسال میکند و شما را مطلع میکند", returnEMhide());
+                    sendMessage($chatId, " برای دیدن نتیجه آزمون باید برای سه نفر لینک زیر را بفرستید. زمانی که سه نفر از طریق لینک زیر وارد ربات شوند نتیجه آزمون با تمام توضیحات مهم روانشناسی برای شما ارسال میشود. \nنکته جالب این است که هر زمان کسی با لینک شما وارد ربات شود، ربات به شما پیامی ارسال میکند و شما را مطلع میکند", returnEMhide());
                 }
                 break;
         }
