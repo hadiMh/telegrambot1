@@ -32,7 +32,7 @@
     }
     $userAnswer = isItAValidChoise(faNumToEn($message));
     if(getGamePositionFromDb()==$MAXNUMBER+2){
-        sendMessage($chatId, "شما قبلا این آزمون را پاسخ داده اید. امتیاز شما ".calculateUserScore()." شده است.", returnEMt($btns['invite']));
+        sendMessage($chatId, "شما قبلا این آزمون را پاسخ داده اید. امتیاز شما ".calculateUserScore()." شده است.", returnEMt(array("شخصیت من بر اساس امتیازی \nکه بدست آوردم")));
         // showTheCharacteristic();
     }else if (hasUserStartedTheGame() and isItAValidChoise(faNumToEn($message))){    
         if(getGamePositionFromDb()<=$MAXNUMBER+1){
@@ -40,7 +40,7 @@
             if(getGamePositionFromDb()==$MAXNUMBER+1) 
             {
                 addGamePostionInDb();
-                sendMessage($chatId, "تبریک. شما به همه سوالای این آزمون جواب دادین. امتیاز شما ".calculateUserScore()." می باشد.", returnEMt($btns['invite']));
+                sendMessage($chatId, "تبریک. شما به همه سوالای این آزمون جواب دادین. امتیاز شما ".calculateUserScore()." می باشد.", returnEMt(array("شخصیت من بر اساس امتیازی \nکه بدست آوردم")));
                 // showTheCharacteristic();
             }
         }
