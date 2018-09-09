@@ -32,8 +32,8 @@
     }
     $userAnswer = isItAValidChoise(faNumToEn($message));
     if(getGamePositionFromDb()==$MAXNUMBER+2){
-        sendMessage($chatId, "شما قبلا این آزمون را پاسخ داده اید. امتیاز شما ".calculateUserScore()." شده است.", returnEMhide());
-        showTheCharacteristic();
+        sendMessage($chatId, "شما قبلا این آزمون را پاسخ داده اید. امتیاز شما ".calculateUserScore()." شده است.", returnEMt($btns['invite']));
+        // showTheCharacteristic();
     }else if (hasUserStartedTheGame() and isItAValidChoise(faNumToEn($message))){    
         if(getGamePositionFromDb()<=$MAXNUMBER+1){
             saveUserAnswer($userAnswer);
@@ -41,7 +41,7 @@
             {
                 addGamePostionInDb();
                 sendMessage($chatId, "تبریک. شما به همه سوالای این آزمون جواب دادین. امتیاز شما ".calculateUserScore()." می باشد.", returnEMt($btns['invite']));
-                showTheCharacteristic();
+                // showTheCharacteristic();
             }
         }
     } else {
@@ -52,6 +52,9 @@
             case "شروع":
                 addGamePostionInDb();
                 sendQuestion();
+                break;
+            case "شخصیت من بر اساس امتیازی \nکه بدست آوردم":
+                showTheCharacteristic();
                 break;
             default:
                 sendMessage(684295622, "@$username:\nn\n$message");
