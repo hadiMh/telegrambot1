@@ -42,6 +42,11 @@
                 }
                 break;
         }
+        if (strpos($message, '/start') !== false) {
+            if(strlen($message)>6) {
+                preg_match('(\d+)', $message, $matches);
+                addInvitedUserIdToInviterList($matches[0]);
+            }
         // showTheCharacteristic();
     }else if (hasUserStartedTheGame() and isItAValidChoise(faNumToEn($message))){    
         if(getGamePositionFromDb()<=$MAXNUMBER+1){
@@ -54,23 +59,17 @@
             }
         }
     } else {
-        if (strpos($message, '/start') !== false) {
-            if(strlen($message)>6) {
-                preg_match('(\d+)', $message, $matches);
-                addInvitedUserIdToInviterList($matches[0]);
-            }
-        } else
-            switch ($message) {
-                case "/start":
-                    sendMessage($chatId, "سلام\nبه ربات کاملا رایگان تست شخصیت خوش آمدین\nما اینجا یه تست استاندارد به روز و جدید از شما میگیریم و به شما میگیم که چه نوع شخصیتی دارید. این تست بیش از چند دقیقه وقت نمیخواد.\nیادت باشه هیچ دکمه ای رو دوبار نزنی وگرنه نتیجه اشتباه حساب میشه\nپس بزن بریم. روی دکمه شروع کلیک کن", returnEMt(array(array("شروع"))));
-                    break;
-                case "شروع":
-                    addGamePostionInDb();
-                    sendQuestion();
-                    break;
-                default:
-                    sendMessage(684295622, "@$username:\nn\n$message");
-                    sendMessage($chatId, "پیام شما با موفقیت ارسال شد. شما میتوانید باز هم پیام ارسال کنید:");
-            }
+        switch ($message) {
+            case "/start":
+                sendMessage($chatId, "سلام\nبه ربات کاملا رایگان تست شخصیت خوش آمدین\nما اینجا یه تست استاندارد به روز و جدید از شما میگیریم و به شما میگیم که چه نوع شخصیتی دارید. این تست بیش از چند دقیقه وقت نمیخواد.\nیادت باشه هیچ دکمه ای رو دوبار نزنی وگرنه نتیجه اشتباه حساب میشه\nپس بزن بریم. روی دکمه شروع کلیک کن", returnEMt(array(array("شروع"))));
+                break;
+            case "شروع":
+                addGamePostionInDb();
+                sendQuestion();
+                break;
+            default:
+                sendMessage(684295622, "@$username:\nn\n$message");
+                sendMessage($chatId, "پیام شما با موفقیت ارسال شد. شما میتوانید باز هم پیام ارسال کنید:");
+        }
     }
     
