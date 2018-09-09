@@ -249,3 +249,31 @@
             return $score;
         }
     }
+
+    function showTheCharacteristic() {
+        global $characters;
+        global $userId;
+        global $connection;
+
+        $query = "SELECT * FROM table1 WHERE from_id = $userId ";
+        $result = mysqli_query($connection, $query);
+        $row = mysqli_fetch_assoc($result);
+        $answer = (int)$row['final_score'];
+
+        $characteristic = "";
+
+        if($answer>=61)
+            $characteristic = $characters[61];
+        else if($answer>=51)
+            $characteristic = $characters[51];
+        else if($answer>=41)
+            $characteristic = $characters[41];
+        else if($answer>=31)
+            $characteristic = $characters[31];
+        else if($answer>=21)
+            $characteristic = $characters[21];
+        else if($answer<=20)
+            $characteristic = $characters[0];
+
+        sendMessage($chatId, $characteristic, returnEM($buttoms[0]));
+    }
