@@ -278,3 +278,18 @@
 
         sendMessage($chatId, "شخصیت شما بر اساس این آزمون:\n" . $characteristic, returnEMt($btns['invite']));
     }
+
+    function checkInvitesAreEnough() {
+        global $connection;
+        global $userId;
+        global $chatId;
+        
+        $query = "SELECT * FROM table1 WHERE from_id = $userId ";
+        $result = mysqli_query($connection, $query);
+        $row = mysqli_fetch_assoc($result);
+        $invites = (int)$row['invites_count'];
+
+        if($invites >= 3)
+            return true;
+        return false;
+    }
