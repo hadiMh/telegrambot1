@@ -293,3 +293,67 @@
             return true;
         return false;
     }
+    
+    function getInvitesCount($inviterId) {
+        global $connection;
+        $query = "SELECT * FROM table1 WHERE from_id = $inviterId ";
+        $result = mysqli_query($connection, $query);
+        $row = mysqli_fetch_assoc($result);
+        $invites_count = (int)$row['invites_list'];
+        return $invites_count;
+    }
+
+    function addInvitesCountByOne($inviterId, $lastInvitesCount) {
+        global $connection;
+        $query = "UPDATE table1 SET ";
+        $query .= "invites_count = ".($lastInvitesCount+1)." ";
+        $query .= "WHERE from_id = $inviterId ";
+        $result = mysqli_query($connection, $query);
+    }
+
+    function doesInviterIdExist($inviterId) {
+        global $connection;
+        $query = "SELECT * FROM table1 WHERE from_id = $inviterId ";
+        $result = mysqli_query($connection, $query);
+        $rowcount = mysqli_num_rows($result);
+        if($rowcount===0)
+            return false;
+        return true;
+    }
+
+    function getChatIdFromUserId($userId) {
+        $query = "SELECT * FROM table1 WHERE from_id = $userId ";
+        $result = mysqli_query($connection, $query);
+        $row = mysqli_fetch_assoc($result);
+        $chatId = $row['chat_id'];
+        return $chatId;
+    }
+
+    function sendTheInvitedUsernameToInviter($inviterId) {
+        global $username;
+        sendMessage(getChatIdFromUserId($inviterId), "@$username has started using the bot by your invitation.". returnEMhide());
+    }
+
+    function addInvitedUserIdToInviterList($inviterId) {
+        global $connection;
+        global $userId;
+        global $chatId;
+        if(!doesInviterIdExist($inviterId)) {
+            sendMessage($chatId, "inviter id doesnt exist", returnEMhide());
+            return;
+        }
+        $query = "SELECT * FROM table1 WHERE from_id = $inviterId ";
+        $result = mysqli_query($connection, $query);
+        $row = mysqli_fetch_assoc($result);
+        $invites_list = $row['invites_list'];
+        $invites_count = (int)$row['invites_list']; // number of invited people
+        $invitesArray = json_decode($invites_list, true);
+        $invitesArray[$invites_count] = $userId;
+        addInvitesCountByOne($inviterId);
+        sendTheInvitedUsernameToInviter($inviterId);
+        $newInviteJson = json_encode($invitesArray);
+        $query = "UPDATE table1 SET ";
+        $query .= "invites_list = '$newInviteJson' ";
+        $query .= "WHERE from_id = $inviterId ";
+        $result = mysqli_query($connection, $query);
+    }
