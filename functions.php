@@ -344,7 +344,7 @@
 
     function userClickOnHisInviteLink($inviterId) {
         global $userId;
-        if($userId == $inviterId)
+        if($userId == $inviterId) 
             return true;
         return false;
     }
