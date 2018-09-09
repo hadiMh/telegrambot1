@@ -335,6 +335,13 @@
         sendMessage(getChatIdFromUserId($inviterId), "@$username has started using the bot by your invitation.". returnEMhide());
     }
 
+    function isThisUserAlreadyBeenInvitedByInviter($invitesArray) {
+        global $userId;
+        if(in_array($userId, $invitesArray))
+            return true;
+        return false;
+    }
+
     function addInvitedUserIdToInviterList($inviterId) {
         global $connection;
         global $userId;
@@ -349,7 +356,11 @@
         $invites_list = $row['invites_list'];
         $invites_count = (int)$row['invites_list']; // number of invited people
         $invitesArray = json_decode($invites_list, true);
-        sendMessage($chatId, "--".print_r($invitesArray), returnEMhide());
+        // sendMessage($chatId, "--".print_r($invitesArray), returnEMhide());
+        if(isThisUserAlreadyBeenInvitedByInviter($invitesArray)) {
+            sendMessage($chatId, "this user has been invited before.", returnEMhide());
+            return;
+        }
         $invitesArray[count($invitesArray)] = $userId;
         // file_put_contents('log.txt', file_get_contents('log.txt').print_r($invitesArray));
         addInvitesCountByOne($inviterId, getInvitesCount($inviterId));
