@@ -32,7 +32,7 @@
         addGamePostionInDb();
         sendQuestion();
     }
-    sendMessage($userId, $message, returnEMhide());
+    sendMessage($chatId, $message, returnEMhide());
     if (strpos($message, '/start') !== false) {
         if(1) {
             preg_match('(\d+)', $message, $matches);

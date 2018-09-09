@@ -322,6 +322,7 @@
     }
 
     function getChatIdFromUserId($userId) {
+        global $connection;
         $query = "SELECT * FROM table1 WHERE from_id = $userId ";
         $result = mysqli_query($connection, $query);
         $row = mysqli_fetch_assoc($result);
