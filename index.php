@@ -55,17 +55,24 @@
 
     /* TASK: If user has completed the exam. */
     if(getGamePositionFromDb()==$MAXNUMBER+2){
-        sendMessage($chatId, "شما قبلا این آزمون را پاسخ داده اید. امتیاز شما ".calculateUserScore()." شده است.", returnEMhide());
+        // sendMessage($chatId, "شما قبلا این آزمون را پاسخ داده اید. امتیاز شما ".calculateUserScore()." شده است.", returnEMhide());
         switch ($message) {
             case "charac":
                 if(!checkInvitesAreEnough()){
                     sendMessage($chatId, " برای دیدن نتیجه آزمون باید برای سه نفر لینک زیر را بفرستید. زمانی که سه نفر از طریق لینک زیر وارد ربات شوند نتیجه آزمون با تمام توضیحات مهم روانشناسی برای شما ارسال میشود. \nنکته جالب این است که هر زمان کسی با لینک شما وارد ربات شود، ربات به شما پیامی ارسال میکند و شما را مطلع میکند", returnEMhide());
                 }
                 break;
+            case "امتیاز من":
+                sendMessage($chatId, "امتیاز شما:  ".calculateUserScore(), returnEMt($btn_finishedExam));
+                break;
+            case "دعوت دیگران":
+                sendMessage($chatId, "ربات تست شخصیت:\nبیا توی این ربات و ببین شخصیتت چیه. این یکی از آخرین و بروزترین تست های شخصیت اروپاست.\nپس منتظر چی هستی؟ روی لینک زیر کلیک کن و توی کمتر از یک دقیقه ببین چه شخصیتی داری\n https://t.me/hadiprobot?start=".$userId, returnEMhide());
+                sendMessage($chatId, "لینک بالا رو برای دیگران بفرست. هروقت کسی با این لینک وارد ربات بشه بهت اطلاع میدم. وقتی 3 تا عضو جدید از طریق این لینک وارد ربات بشن میگم چه شخصیتی داری. پس منتظر چی هستی؟ بفرست تا ببینی چه شخصیتی داری.", returnEMt($btn_finishedExam));
+                break;
         }
-
+    }
     /* TASK: If the user sent an answer to a question. */
-    }else if (hasUserStartedTheGame() and isItAValidChoise(faNumToEn($message))){    
+    else if (hasUserStartedTheGame() and isItAValidChoise(faNumToEn($message))){    
         if(getGamePositionFromDb()<=$MAXNUMBER+1){
             saveUserAnswer($userAnswer);
         }
