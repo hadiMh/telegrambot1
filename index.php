@@ -41,10 +41,10 @@
     
     /* TASK: if user wants to start the exam. */
     if( $message === "شروع" ) {
-        if(hasUserStartedTheGame() and canUserContinueGame()){
+        
             addGamePostionInDb();
             sendQuestion();
-        }
+        
     }
 
     /* TASK: Ask questions if user is in the exam stage. */
