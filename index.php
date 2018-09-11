@@ -70,9 +70,9 @@
             saveUserAnswer($userAnswer);
         }
         /* TASK: if user has finished the exam. */
-        else if(getGamePositionFromDb()>$MAXNUMBER+1) 
+        if(getGamePositionFromDb()==$MAXNUMBER+2) 
         {
-            // addGamePostionInDb();
+            addGamePostionInDb();
             sendMessage($chatId, "تبریک. شما به همه سوالای این آزمون جواب دادین. امتیاز شما ".calculateUserScore()." می باشد.", returnEMt($btn_finishedExam));
             // showTheCharacteristic();
         }
