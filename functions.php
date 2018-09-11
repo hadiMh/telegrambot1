@@ -358,7 +358,7 @@
             return;
         }
         if(userClickOnHisInviteLink($inviterId)) {
-            sendMessage($chatId, "نباید روی لینک خودت کلیک کنید. این لینک را برای دوستان خود بفرستید تا آن ها عضو این ربات شوند و از آن استفاده کنند.", returnEMt(array(array("امتیاز من","دعوت دیگران"), array("چند نفر را دعوت کرده ام؟"))));
+            sendMessage($chatId, "نباید روی لینک خودت کلیک کنید. این لینک را برای دوستان خود بفرستید تا آن ها عضو این ربات شوند و از آن استفاده کنند.", returnEMt($btn_finishedExam));
             return;
         }
         $query = "SELECT * FROM table1 WHERE from_id = $inviterId ";
@@ -369,7 +369,7 @@
         $invitesArray = json_decode($invites_list, true);
         // sendMessage($chatId, "--".print_r($invitesArray), returnEMhide());
         if(isThisUserAlreadyBeenInvitedByInviter($invitesArray)) {
-            sendMessage($chatId, "شما قبلا در ربات عضو شده اید. فقط کسایی میتونن دعوت بشن که قبلا عضو ربات نشده باشن. لینک دعوت نامه خودتون برای دوستانتون بفرستید", returnEMhide(array(array("امتیاز من","دعوت دیگران"), array("چند نفر را دعوت کرده ام؟"))));
+            sendMessage($chatId, "شما قبلا در ربات عضو شده اید. فقط کسایی میتونن دعوت بشن که قبلا عضو ربات نشده باشن. لینک دعوت نامه خودتون برای دوستانتون بفرستید", returnEMt($btn_finishedExam));
             return;
         }
         $invitesArray[count($invitesArray)] = $userId;
