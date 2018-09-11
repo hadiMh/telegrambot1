@@ -339,8 +339,8 @@
         global $chatId;
         sendMessage(getChatIdFromUserId($inviterId), " @$username\n از طریق لینک دعوتنامه شما وارد ربات شد. تا الان شما ".getInvitesCount($inviterId)." نفر را عضو ربات کرده اید.", returnEMt(array(array("امتیاز من","دعوت دیگران", "شخصیت من"), array("چند نفر را دعوت کرده ام؟"))));
         if(checkInvitesAreEnough($inviterId)) {
-            sendMessage($chatId, "شما تعداد نفرات کافی را عضو ربات کرده اید.", returnEMt(array(array("امتیاز من","دعوت دیگران"), array("چند نفر را دعوت کرده ام؟"))));
-            sendMessage($chatId, showTheCharacteristic($inviterId), returnEMt(array(array("امتیاز من","دعوت دیگران"), array("چند نفر را دعوت کرده ام؟"))));
+            sendMessage(getChatIdFromUserId($inviterId), "شما تعداد نفرات کافی را عضو ربات کرده اید.", returnEMt(array(array("امتیاز من","دعوت دیگران"), array("چند نفر را دعوت کرده ام؟"))));
+            sendMessage(getChatIdFromUserId($inviterId), showTheCharacteristic($inviterId), returnEMt(array(array("امتیاز من","دعوت دیگران"), array("چند نفر را دعوت کرده ام؟"))));
         }
     }
 
