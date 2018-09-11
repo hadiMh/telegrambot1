@@ -360,7 +360,7 @@
         }
         sendMessage($chatId, "helllllll2", returnEMhide());
         if(userClickOnHisInviteLink($inviterId)) {
-            sendMessage($chatId, "نباید روی لینک خودت کلیک کنید. این لینک را برای دوستان خود بفرستید تا آن ها عضو این ربات شوند و از آن استفاده کنند.", returnEMt($btn_finishedExam));
+            sendMessage($chatId, "نباید روی لینک خودت کلیک کنید. این لینک را برای دوستان خود بفرستید تا آن ها عضو این ربات شوند و از آن استفاده کنند.", returnEMt(array(array("امتیاز من","دعوت دیگران"), array("چند نفر را دعوت کرده ام؟"))));
             return;
         }
         sendMessage($chatId, "helllllll3", returnEMhide());
