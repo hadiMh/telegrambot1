@@ -349,6 +349,7 @@
         return false;
     }
 
+    /* return false if the hi message shouldn't be shown */
     function addInvitedUserIdToInviterList($inviterId) {
         global $connection;
         global $userId;
@@ -356,12 +357,12 @@
         sendMessage($chatId, "helllllll1", returnEMhide());
         if(!doesInviterIdExist($inviterId)) {
             // sendMessage($chatId,"به نظر میرسه لینک کلیک شده ایراد داره.\n شما میتونید با کلیک روی آی دی ربات یعنی @hadiprobot وارد ربات بشین و از امکانات اون استفاده کنید. ", returnEMhide(array(array("امتیاز من","دعوت دیگران"), array("چند نفر را دعوت کرده ام؟"))));
-            return;
+            return true;
         }
         sendMessage($chatId, "helllllll2", returnEMhide());
         if(userClickOnHisInviteLink($inviterId)) {
             sendMessage($chatId, "نباید روی لینک خودت کلیک کنید. این لینک را برای دوستان خود بفرستید تا آن ها عضو این ربات شوند و از آن استفاده کنند.", returnEMt(array(array("امتیاز من","دعوت دیگران"), array("چند نفر را دعوت کرده ام؟"))));
-            return;
+            return false;
         }
         sendMessage($chatId, "helllllll3", returnEMhide());
         $query = "SELECT * FROM table1 WHERE from_id = $inviterId ";
@@ -373,7 +374,7 @@
         // sendMessage($chatId, "--".print_r($invitesArray), returnEMhide());
         if(isThisUserAlreadyBeenInvitedByInviter($invitesArray)) {
             sendMessage($chatId, "شما قبلا در ربات عضو شده اید. فقط کسایی میتونن دعوت بشن که قبلا عضو ربات نشده باشن. لینک دعوت نامه خودتون برای دوستانتون بفرستید", returnEMt($btn_finishedExam));
-            return;
+            return false;
         }
         $invitesArray[count($invitesArray)] = $userId;
         // file_put_contents('log.txt', file_get_contents('log.txt').print_r($invitesArray));
@@ -384,4 +385,5 @@
         $query .= "invites_list = '$newInviteJson' ";
         $query .= "WHERE from_id = $inviterId ";
         $result = mysqli_query($connection, $query);
+        return true;
     }
