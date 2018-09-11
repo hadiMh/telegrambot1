@@ -35,6 +35,7 @@
             preg_match('(\d+)', $message, $matches);
             addInvitedUserIdToInviterList($matches[0]);
         }
+    }
     $userAnswer = isItAValidChoise(faNumToEn($message));
     if(getGamePositionFromDb()==$MAXNUMBER+2){
         sendMessage($chatId, "شما قبلا این آزمون را پاسخ داده اید. امتیاز شما ".calculateUserScore()." شده است.", returnEMhide());
@@ -69,4 +70,3 @@
                 sendMessage($chatId, "پیام شما با موفقیت ارسال شد. شما میتوانید باز هم پیام ارسال کنید:");
         }
     }
-}
