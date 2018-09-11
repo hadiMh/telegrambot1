@@ -24,6 +24,8 @@
     $chatId = $update["message"]["chat"]["id"];
     $message = $update["message"]["text"];
 
+    $numberOfInvites = 1;
+
     /* Check if the user exists. if not add it to the database */
     addUserIfDoesntExist();
 

@@ -1,4 +1,5 @@
 <?php
+
     function sendMessage($chatId, $message, $r)
     {
         $url = $GLOBALS['webSite'] . "/sendMessage?chat_id=" . $chatId . "&text=" . urlencode($message) . "&reply_markup=" . $r;
@@ -287,13 +288,14 @@
 
     function checkInvitesAreEnough($userId) {
         global $connection;
+        global $numberOfInvites;
         
         $query = "SELECT * FROM table1 WHERE from_id = $userId ";
         $result = mysqli_query($connection, $query);
         $row = mysqli_fetch_assoc($result);
         $invites = (int)$row['invites_count'];
 
-        if($invites >= 3)
+        if($invites >= $numberOfInvites)
             return true;
         return false;
     }
