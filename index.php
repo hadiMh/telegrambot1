@@ -72,8 +72,8 @@
         /* TASK: if user has finished the exam. */
         if(getGamePositionFromDb()==$MAXNUMBER+1) 
         {
-            addGamePostionInDb();
             sendMessage($chatId, "تبریک. شما به همه سوالای این آزمون جواب دادین. امتیاز شما ".calculateUserScore()." می باشد.", returnEMt($btn_finishedExam));
+            addGamePostionInDb();
             // showTheCharacteristic();
         }
     }
