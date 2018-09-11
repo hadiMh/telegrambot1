@@ -282,7 +282,7 @@
         else if($answer<=20)
             $characteristic = $characters[0];
 
-        sendMessage(getChatIdFromUserId($userId), "شخصیت شما بر اساس این آزمون:\n" . $characteristic, returnEMt($btns['invite']));
+        sendMessage(getChatIdFromUserId($userId), "شخصیت شما بر اساس این آزمون:\n" . $characteristic, returnEMt(array(array("امتیاز من","دعوت دیگران", "شخصیت من"), array("چند نفر را دعوت کرده ام؟"))));
     }
 
     function checkInvitesAreEnough($userId) {
