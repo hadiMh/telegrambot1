@@ -74,6 +74,19 @@
                 sendMessage($chatId, "ربات تست شخصیت:\nبیا توی این ربات و ببین شخصیتت چیه. این یکی از آخرین و بروزترین تست های شخصیت اروپاست.\nپس منتظر چی هستی؟ روی لینک زیر کلیک کن و توی کمتر از یک دقیقه ببین چه شخصیتی داری\n https://t.me/hadiprobot?start=".$userId, returnEMt($btn_finishedExam));
                 sendMessage($chatId, "لینک بالا رو برای دیگران بفرست. هروقت کسی با این لینک وارد ربات بشه بهت اطلاع میدم. وقتی 3 تا عضو جدید از طریق این لینک وارد ربات بشن میگم چه شخصیتی داری. پس منتظر چی هستی؟ بفرست تا ببینی چه شخصیتی داری.", returnEMt($btn_finishedExam));
                 break;
+            case "چند نفر را دعوت کرده ام؟":
+                sendMessage($chatId, "تعداد نفراتی که تا کنون با لینک دعوتنامه شما عضو ربات شده اند: ". getInvitesCount($userId), returnEMt($btn_finishedExam));
+                break;
+            case "شخصیت من":
+                if(!hadUserFinishedTheGame()) {
+                    sendMessage($chatId, "شما ابتدا باید به همه سوالات پاسخ بدین تا بتونم امتیاط شما رو حساب کنم.", returnEMt($btn_finishedExam));
+                } else if(!checkInvitesAreEnough($userId)) {
+                    sendMessage($chatId, "برای دیدن نتیجه آزمون بر اساس امتیازی که بدست آوردین 3 نفر از دوستانتون رو با لینک دعوت نامه خود، عضو ربات کنید.", returnEMt($btn_finishedExam));
+                    sendMessage($chatId, "تعداد نفراتی که تا کنون با لینک دعوتنامه شما عضو ربات شده اند: ". getInvitesCount($userId), returnEMt($btn_finishedExam));
+                } else {
+                    showTheCharacteristic($userId);
+                }
+                break;
         }
     }
     /* TASK: If the user sent an answer to a question. */

@@ -82,4 +82,4 @@
         "invite" => array(array("لینک دعوت نامه"))
     );
 
-    $btn_finishedExam = array(array("امتیاز من","دعوت دیگران"), array("چند نفر را دعوت کرده ام؟"));
+    $btn_finishedExam = array(array("امتیاز من","دعوت دیگران", "شخصیت من"), array("چند نفر را دعوت کرده ام؟"));

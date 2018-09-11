@@ -128,6 +128,14 @@
         return true;
     }
 
+    function hadUserFinishedTheGame() {
+        global $MAXNUMBER;
+        $userGamePosition = getGamePositionFromDb();
+        if($userGamePosition > $MAXNUMBER+1)
+            return true;
+        return false;
+    }
+
     /* checks if the user send an answer of one of the questions */
     /* 
     * @params  $text : the text that user sent to the robot    
@@ -251,10 +259,8 @@
         }
     }
 
-    function showTheCharacteristic() {
+    function showTheCharacteristic($userId) {
         global $characters;
-        global $userId;
-        global $chatId;
         global $connection;
         global $btns;
 
@@ -276,13 +282,11 @@
         else if($answer<=20)
             $characteristic = $characters[0];
 
-        sendMessage($chatId, "شخصیت شما بر اساس این آزمون:\n" . $characteristic, returnEMt($btns['invite']));
+        sendMessage(getChatIdFromUserId($userId), "شخصیت شما بر اساس این آزمون:\n" . $characteristic, returnEMt($btns['invite']));
     }
 
-    function checkInvitesAreEnough() {
+    function checkInvitesAreEnough($userId) {
         global $connection;
-        global $userId;
-        global $chatId;
         
         $query = "SELECT * FROM table1 WHERE from_id = $userId ";
         $result = mysqli_query($connection, $query);
@@ -332,7 +336,12 @@
 
     function sendTheInvitedUsernameToInviter($inviterId) {
         global $username;
-        sendMessage(getChatIdFromUserId($inviterId), "@$username has started using the bot by your invitation.". returnEMhide());
+        global $chatId;
+        sendMessage(getChatIdFromUserId($inviterId), " @$username از طریق لینک دعوتنامه شما وارد ربات شد. تا الان شما ".getInvitesCount($inviterId)." نفر را عضو ربات کرده اید.", returnEMt(array(array("امتیاز من","دعوت دیگران"), array("چند نفر را دعوت کرده ام؟"))));
+        if(checkInvitesAreEnough($inviterId)) {
+            sendMessage($chatId, "شما تعداد نفرات کافی را عضو ربات کرده اید.", returnEMt(array(array("امتیاز من","دعوت دیگران"), array("چند نفر را دعوت کرده ام؟"))));
+            sendMessage($chatId, showTheCharacteristic($inviterId), returnEMt(array(array("امتیاز من","دعوت دیگران"), array("چند نفر را دعوت کرده ام؟"))));
+        }
     }
 
     function isThisUserAlreadyBeenInvitedByInviter($invitesArray) {
