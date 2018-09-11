@@ -67,13 +67,13 @@
     /* TASK: If the user sent an answer to a question. */
     }else if (hasUserStartedTheGame() and isItAValidChoise(faNumToEn($message))){    
         if(getGamePositionFromDb()<=$MAXNUMBER+1){
-            // saveUserAnswer($userAnswer);
-            // /* TASK: if user has finished the exam. */
-            // if(getGamePositionFromDb()>$MAXNUMBER+1) 
-            // {
-            //     addGamePostionInDb();
-            //     sendMessage($chatId, "تبریک. شما به همه سوالای این آزمون جواب دادین. امتیاز شما ".calculateUserScore()." می باشد.", returnEMt($btn_finishedExam));
-            //     // showTheCharacteristic();
-            // }
+            saveUserAnswer($userAnswer);
+            /* TASK: if user has finished the exam. */
+            if(getGamePositionFromDb()>$MAXNUMBER+1) 
+            {
+                // addGamePostionInDb();
+                sendMessage($chatId, "تبریک. شما به همه سوالای این آزمون جواب دادین. امتیاز شما ".calculateUserScore()." می باشد.", returnEMt($btn_finishedExam));
+                // showTheCharacteristic();
+            }
         }
     }
