@@ -360,7 +360,7 @@
             return;
         }
         if(userClickOnHisInviteLink($inviterId)) {
-            sendMessage($chatId, "نباید روی لینک خودت کلیک کنید. این لینک را برای دوستان خود بفرستید تا آن ها عضو این ربات شوند و از آن استفاده کنند.", returnEMt($btn_finishedExam));
+            sendMessage($chatId, "نباید روی لینک خودت کلیک کنید. این لینک را برای دوستان خود بفرستید تا آن ها عضو این ربات شوند و از آن استفاده کنند.", returnEMt(array(array("امتیاز من","دعوت دیگران"), array("چند نفر را دعوت کرده ام؟"))));
             return;
         }
         $query = "SELECT * FROM table1 WHERE from_id = $inviterId ";
