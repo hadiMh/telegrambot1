@@ -44,8 +44,6 @@
         if(hasUserStartedTheGame() and canUserContinueGame()){
             addGamePostionInDb();
             sendQuestion();
-        } else {
-            sendMessage($chatId, "شما قبلا این آزمون رو تمام کرده اید.", returnEMt($btn_finishedExam));
         }
     }
 
