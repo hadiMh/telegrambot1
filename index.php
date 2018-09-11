@@ -66,7 +66,7 @@
                 sendMessage($chatId, "امتیاز شما:  ".calculateUserScore(), returnEMt($btn_finishedExam));
                 break;
             case "دعوت دیگران":
-                sendMessage($chatId, "ربات تست شخصیت:\nبیا توی این ربات و ببین شخصیتت چیه. این یکی از آخرین و بروزترین تست های شخصیت اروپاست.\nپس منتظر چی هستی؟ روی لینک زیر کلیک کن و توی کمتر از یک دقیقه ببین چه شخصیتی داری\n https://t.me/hadiprobot?start=".$userId, returnEMhide());
+                sendMessage($chatId, "ربات تست شخصیت:\nبیا توی این ربات و ببین شخصیتت چیه. این یکی از آخرین و بروزترین تست های شخصیت اروپاست.\nپس منتظر چی هستی؟ روی لینک زیر کلیک کن و توی کمتر از یک دقیقه ببین چه شخصیتی داری\n https://t.me/hadiprobot?start=".$userId, returnEMt($btn_finishedExam));
                 sendMessage($chatId, "لینک بالا رو برای دیگران بفرست. هروقت کسی با این لینک وارد ربات بشه بهت اطلاع میدم. وقتی 3 تا عضو جدید از طریق این لینک وارد ربات بشن میگم چه شخصیتی داری. پس منتظر چی هستی؟ بفرست تا ببینی چه شخصیتی داری.", returnEMt($btn_finishedExam));
                 break;
         }
