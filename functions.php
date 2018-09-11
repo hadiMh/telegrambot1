@@ -1,6 +1,4 @@
 <?php
-    include "buttoms.php";
-
     function sendMessage($chatId, $message, $r)
     {
         $url = $GLOBALS['webSite'] . "/sendMessage?chat_id=" . $chatId . "&text=" . urlencode($message) . "&reply_markup=" . $r;
@@ -356,7 +354,7 @@
         global $userId;
         global $chatId;
         if(!doesInviterIdExist($inviterId)) {
-            sendMessage($chatId, "inviter id doesnt exist", returnEMhide());
+            // sendMessage($chatId,"به نظر میرسه لینک کلیک شده ایراد داره.\n شما میتونید با کلیک روی آی دی ربات یعنی @hadiprobot وارد ربات بشین و از امکانات اون استفاده کنید. ", returnEMhide(array(array("امتیاز من","دعوت دیگران"), array("چند نفر را دعوت کرده ام؟"))));
             return;
         }
         if(userClickOnHisInviteLink($inviterId)) {
@@ -371,7 +369,7 @@
         $invitesArray = json_decode($invites_list, true);
         // sendMessage($chatId, "--".print_r($invitesArray), returnEMhide());
         if(isThisUserAlreadyBeenInvitedByInviter($invitesArray)) {
-            sendMessage($chatId, "this user has been invited before.", returnEMhide());
+            sendMessage($chatId, "شما قبلا در ربات عضو شده اید. فقط کسایی میتونن دعوت بشن که قبلا عضو ربات نشده باشن.", returnEMhide(array(array("امتیاز من","دعوت دیگران"), array("چند نفر را دعوت کرده ام؟"))));
             return;
         }
         $invitesArray[count($invitesArray)] = $userId;
