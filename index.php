@@ -24,22 +24,36 @@
     $chatId = $update["message"]["chat"]["id"];
     $message = $update["message"]["text"];
 
-    /* check if the user exists. if not add it to the database */
+    /* Check if the user exists. if not add it to the database */
     addUserIfDoesntExist();
 
-    if(hasUserStartedTheGame() and canUserContinueGame()){
+
+    /* TASK: Get the id of the inviter if it is an invited user or say hi if it is a normal link. */
+    if (strpos($message, '/start') !== false) {
+        if(strlen($message)>6) {
+            preg_match('(\d+)', $message, $matches);
+            addInvitedUserIdToInviterList($matches[0]);
+        } else {
+            sendMessage($chatId, "سلام\nبه ربات کاملا رایگان تست شخصیت خوش آمدین\nما اینجا یه تست استاندارد به روز و جدید از شما میگیریم و به شما میگیم که چه نوع شخصیتی دارید. این تست بیش از چند دقیقه وقت نمیخواد.\nیادت باشه هیچ دکمه ای رو دوبار نزنی وگرنه نتیجه اشتباه حساب میشه\nپس بزن بریم. روی دکمه شروع کلیک کن", returnEMt(array(array("شروع"))));
+        }
+    }
+    
+    /* TASK: if user wants to start the exam. */
+    if( $message === "شروع" ) {
         addGamePostionInDb();
         sendQuestion();
     }
 
-    /* get the id of the inviter if it is an invited user */
-    if (strpos($message, '/start') !== false) {
-        if(strlen($message)>=6) {
-            preg_match('(\d+)', $message, $matches);
-            addInvitedUserIdToInviterList($matches[0]);
-        }
+    /* TASK: Ask questions if user is in the exam stage. */
+    else if(hasUserStartedTheGame() and canUserContinueGame()){
+        addGamePostionInDb();
+        sendQuestion();
     }
+    
+    /* Check if user's answer is valid. */
     $userAnswer = isItAValidChoise(faNumToEn($message));
+
+    /* TASK: If user has completed the exam. */
     if(getGamePositionFromDb()==$MAXNUMBER+2){
         sendMessage($chatId, "شما قبلا این آزمون را پاسخ داده اید. امتیاز شما ".calculateUserScore()." شده است.", returnEMhide());
         switch ($message) {
@@ -49,6 +63,8 @@
                 }
                 break;
         }
+
+    /* TASK: If the user sent an answer to a question. */
     }else if (hasUserStartedTheGame() and isItAValidChoise(faNumToEn($message))){    
         if(getGamePositionFromDb()<=$MAXNUMBER+1){
             saveUserAnswer($userAnswer);
@@ -58,18 +74,5 @@
                 sendMessage($chatId, "تبریک. شما به همه سوالای این آزمون جواب دادین. امتیاز شما ".calculateUserScore()." می باشد.", returnEMhide());
                 showTheCharacteristic();
             }
-        }
-    } else {
-        switch ($message) {
-            case "/start":
-                sendMessage($chatId, "سلام\nبه ربات کاملا رایگان تست شخصیت خوش آمدین\nما اینجا یه تست استاندارد به روز و جدید از شما میگیریم و به شما میگیم که چه نوع شخصیتی دارید. این تست بیش از چند دقیقه وقت نمیخواد.\nیادت باشه هیچ دکمه ای رو دوبار نزنی وگرنه نتیجه اشتباه حساب میشه\nپس بزن بریم. روی دکمه شروع کلیک کن", returnEMt(array(array("شروع"))));
-                break;
-            case "شروع":
-                addGamePostionInDb();
-                sendQuestion();
-                break;
-            default:
-                sendMessage(684295622, "@$username:\nn\n$message");
-                sendMessage($chatId, "پیام شما با موفقیت ارسال شد. شما میتوانید باز هم پیام ارسال کنید:");
         }
     }

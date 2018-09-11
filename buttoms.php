@@ -79,5 +79,5 @@
     );
 
     $btns = array(
-        "invite" => array(array("شخصیت من"))
+        "invite" => array(array("لینک دعوت نامه"))
     );
