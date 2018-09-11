@@ -361,6 +361,7 @@
             sendMessage($chatId, "نباید روی لینک خودت کلیک کنید. این لینک را برای دوستان خود بفرستید تا آن ها عضو این ربات شوند و از آن استفاده کنند.", returnEMt($btn_finishedExam));
             return;
         }
+        sendMessage($chatId, "helllllll", returnEMhide());
         $query = "SELECT * FROM table1 WHERE from_id = $inviterId ";
         $result = mysqli_query($connection, $query);
         $row = mysqli_fetch_assoc($result);
