@@ -66,7 +66,7 @@
 
     /* TASK: If the user sent an answer to a question. */
     }else if (hasUserStartedTheGame() and isItAValidChoise(faNumToEn($message))){    
-        if(getGamePositionFromDb()<=$MAXNUMBER+1){
+        if(getGamePositionFromDb()<=$MAXNUMBER+2){
             saveUserAnswer($userAnswer);
             /* TASK: if user has finished the exam. */
             if(getGamePositionFromDb()==$MAXNUMBER+1) 
