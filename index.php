@@ -26,12 +26,15 @@
 
     /* check if the user exists. if not add it to the database */
     addUserIfDoesntExist();
+
     if(hasUserStartedTheGame() and canUserContinueGame()){
         addGamePostionInDb();
         sendQuestion();
     }
+
+    /* get the id of the inviter if it is an invited user */
     if (strpos($message, '/start') !== false) {
-        if(1) {
+        if(strlen($message)>=6) {
             preg_match('(\d+)', $message, $matches);
             addInvitedUserIdToInviterList($matches[0]);
         }
