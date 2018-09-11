@@ -358,7 +358,7 @@
             return;
         }
         if(userClickOnHisInviteLink($inviterId)) {
-            sendMessage($chatId, "you shouldn't click on your own invitation link. just send it to your friends personaly or in chats so they can use the bot.", returnEMhide());
+            sendMessage($chatId, "شما نباید روی لینک خود کلیک کنید. این لینک را برای دوستان خود بفرستید تا آن ها عضو این ربات شوند و از آن استفاده کننید.", returnEMhide());
             return;
         }
         $query = "SELECT * FROM table1 WHERE from_id = $inviterId ";

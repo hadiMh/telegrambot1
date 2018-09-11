@@ -24,15 +24,12 @@
     $chatId = $update["message"]["chat"]["id"];
     $message = $update["message"]["text"];
 
-    sendMessage($chatId, print_r($update, true), returnEMhide());
-
     /* check if the user exists. if not add it to the database */
     addUserIfDoesntExist();
     if(hasUserStartedTheGame() and canUserContinueGame()){
         addGamePostionInDb();
         sendQuestion();
     }
-    sendMessage($chatId, $message, returnEMhide());
     if (strpos($message, '/start') !== false) {
         if(1) {
             preg_match('(\d+)', $message, $matches);
