@@ -354,17 +354,14 @@
         global $connection;
         global $userId;
         global $chatId;
-        sendMessage($chatId, "helllllll1", returnEMhide());
         if(!doesInviterIdExist($inviterId)) {
             // sendMessage($chatId,"به نظر میرسه لینک کلیک شده ایراد داره.\n شما میتونید با کلیک روی آی دی ربات یعنی @hadiprobot وارد ربات بشین و از امکانات اون استفاده کنید. ", returnEMhide(array(array("امتیاز من","دعوت دیگران"), array("چند نفر را دعوت کرده ام؟"))));
             return true;
         }
-        sendMessage($chatId, "helllllll2", returnEMhide());
         if(userClickOnHisInviteLink($inviterId)) {
             sendMessage($chatId, "نباید روی لینک خودت کلیک کنید. این لینک را برای دوستان خود بفرستید تا آن ها عضو این ربات شوند و از آن استفاده کنند.", returnEMt(array(array("امتیاز من","دعوت دیگران"), array("چند نفر را دعوت کرده ام؟"))));
             return false;
         }
-        sendMessage($chatId, "helllllll3", returnEMhide());
         $query = "SELECT * FROM table1 WHERE from_id = $inviterId ";
         $result = mysqli_query($connection, $query);
         $row = mysqli_fetch_assoc($result);
