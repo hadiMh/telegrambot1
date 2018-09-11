@@ -39,8 +39,12 @@
     
     /* TASK: if user wants to start the exam. */
     if( $message === "شروع" ) {
-        addGamePostionInDb();
-        sendQuestion();
+        if(hasUserStartedTheGame() and canUserContinueGame()){
+            addGamePostionInDb();
+            sendQuestion();
+        } else {
+            sendMessage($chatId, "شما قبلا این آزمون رو تمام کرده اید.", returnEMt($btn_finishedExam));
+        }
     }
 
     /* TASK: Ask questions if user is in the exam stage. */
